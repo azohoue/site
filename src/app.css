@@ -1,3 +1,96 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+    font-family: quicksand2;
+    src: url("/fonts/Quicksand-Regular.ttf");
+}
+@font-face {
+    font-family: quicksand2;
+    src: url("/fonts/Quicksand-SemiBold.ttf");
+    font-weight: 600;
+}
+@font-face {
+    font-family: quicksand2;
+    src: url("/fonts/Quicksand-Bold.ttf");
+    font-weight: 900;
+}
+
+*{
+    font-family: QuickSand, quicksand2;
+}
+body, :root{
+    min-height: 100vh;
+    height: 100%;
+    width: 100vw;
+    overflow-x: hidden;
+}
+
+::placeholder{
+    display: none !important;
+}
+
+/*  */
+#preview a{
+    text-decoration: underline;
+    color: rgb(29, 29, 141);
+    font-size: 18px;
+}
+#preview > h1{
+    font-weight: bold;
+    font-size: 40px;
+    margin: 40px 0px 20px 0px;
+}
+#preview > h2{
+    font-weight: bold;
+    font-size: 32px;
+    margin: 20px 0px 10px 0px;
+}
+#preview > h3{
+    font-weight: bold;
+    font-size: 24px;
+    margin: 10px 0px 10px 0px;
+}
+#preview > h4{
+    font-weight: bold;
+    font-size: 20px;
+    margin: 40px 0px 10px 0px;
+}
+#preview > h5{
+    font-weight: bold;
+    font-size: 16px;
+    margin: 40px 0px 10px 0px;
+}
+#preview > h6{
+    font-weight: bold;
+    font-size: 12px;
+    margin: 40px 0px 20px 0px;
+}
+
+#preview > ul{
+    width: 100%;
+    list-style: disc;
+    padding: 0px 40px;
+    margin-bottom: 10px;
+}
+#preview > ol{
+    width: 100%;
+    list-style: lower-roman;
+    padding: 0px 40px;
+}
+
+#preview > blockquote{
+    width: 95%;
+    border-radius: 5px;
+    list-style: lower-roman;
+    padding: 0px 40px;
+    background-color: #F5F5F5;
+    padding: 10px;
+    margin: 0px auto;
+    
+}
+#preview > blockquote p{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-style: italic;
+}
