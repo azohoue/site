@@ -1,13 +1,22 @@
 <script lang="ts">
+	import { enhance } from '$app/forms';
+	import { toast } from "@zerodevx/svelte-toast";
     import {marked} from "marked"
 	import sanitizeHTML from "sanitize-html"
+	import type { PageData } from "./$types";
 
+    export let data:PageData;
+
+    const orgaId = data.organization?.id;
     let preview:HTMLDivElement;
-
+    let pHTML ="";
     let emploi:any ={
+        name: "",
+        location: "",
+        salary: "",
+        contract: "",
         description: ""
     }
-
     const renderHTML = ()=>{      
 		preview.innerHTML = sanitizeHTML(marked(emploi.description), {
 			allowedTags: ["h1", "h2", "h3", "h4", "h5",
@@ -16,6 +25,7 @@
 			"i", "em", "strong"
 		]
 		})
+        pHTML = preview.innerHTML
 	}
 
 </script>
@@ -24,28 +34,66 @@
         <div id="offer-header" class="mb-5 border-b-2">
             <h3 class="text-[20px] font-semibold h-10">Créer une offre d'emploi</h3>
         </div>
-        <div id="offer-details" class="flex flex-col gap-4">
+        <form method="POST" id="offer-details" class="flex flex-col gap-4" use:enhance={()=>{
+            return async ({result, update}) => {
+                if(result.type != "success"){
+                    toast.push("Le formulaire est invalide", {
+                        theme:{
+                            "--toastBackground": "#e84118",
+                            "--toastBarBackground": "#c23616"
+                        }
+                    })
+                }else{
+                    toast.pop(0)
+                    // Supprimer tous les auutres 
+                    // Afficher le succèss
+                    toast.push("Votre offre d'emploi est en attente de validation", {
+                        theme:{
+                            "--toastBackground": "#fbc531",
+                            "--toastBarBackground": "#e1b12c"
+                        }
+                    })
+                }
+            }
+        }}>
             <div id="offer-name" class="flex flex-col gap-1">
                 <h3 class="text-md font-semibold">Nom du poste</h3>
                 <span class="text-sm text-[#8A8FAC]">Veuillez saisir vos informations sur votre entreprise.</span>
-                <input type="text" class="input input-bordered w-full" placeholder="Ex: Designer UI/UX">
+                <input name="name" type="text" class="input input-bordered w-full" placeholder="Ex: Designer UI/UX">
             </div>
             <!--  -->
             <div id="location-salary" class="flex flex-col sm:flex-row gap-5">
                 <div class="form-control w-full gap-1">
                     <h3 class="text-md font-semibold">Localisation</h3>
-                    <input type="text" placeholder="Ex: Djossou" class="input input-bordered w-full" />
+                    <select name="location" class="select select-bordered w-full">
+                        <option selected>Bénin</option>
+                        <option>Burkina Faso</option>
+                        <option>Côte d'ivoire</option>
+                        <option>Mali</option>
+                        <option>Sénégal</option>
+                        <option>Togo</option>
+                        <option>Non spécifié</option>
+                    </select>
                   </div>
                   <div class="form-control w-full gap-1">
                     <h3 class="text-md font-semibold">Salaire</h3>
-                    <input type="text" placeholder="Ex: Paul" class="input input-bordered w-full" />
+                    <select name="salary" class="select select-bordered w-full">
+                        <option selected>50.000F - 100.000F</option>
+                        <option>100.000F - 200.000F</option>
+                        <option>200.000F - 500.000F</option>
+                        <option>500.000F - 900.000F</option>
+                        <option>Autres</option>
+                    </select>
                   </div>
             </div>
             <!--  -->
             <div id="offer-contrat" class="flex flex-col gap-1">
                 <h3 class="text-md font-semibold">Type de contrat</h3>
-                <!-- <span class="text-sm text-[#8A8FAC]">Veuillez saisir vos informations sur votre entreprise.</span> -->
-                <input type="text" class="input input-bordered w-full" placeholder="Ex: Designer UI/UX">
+                <select name="contract" class="select select-bordered w-full">
+                    <option selected>CDD</option>
+                    <option>CDI</option>
+                    <option>Contrat d'apprentissage</option>
+                </select>
             </div>
             <!--  -->
             <div id="offer-description" class="flex flex-col gap-1 ">
@@ -53,7 +101,7 @@
                 <span class="text-sm text-[#8A8FAC]">Donner plus de détails sur le poste dont vous souhaitez faire l'annonce.</span>
                 <div class="border-[1px] w-full h-[280px] rounded-md bg-white grid grid-rows-[48px,1fr] p-1">
 
-                    <div class="border-b-[1px] flex gap-2 items-center justify-center sm:justify-start">
+                    <div class="border-b-[1px] flex gap-2 items-center justify-center sm:justify-start overflow-x-auto">
                         <div class="h-10 w-10 flex justify-center items-center" on:click={()=>{
                             emploi.description += "* "
                         }}>
@@ -104,19 +152,30 @@
                                 <path fill="currentColor" d="M3,4H5V10H9V4H11V18H9V12H5V18H3V4M15,4H19A2,2 0 0,1 21,6V16A2,2 0 0,1 19,18H15A2,2 0 0,1 13,16V15H15V16H19V12H15V10H19V6H15V7H13V6A2,2 0 0,1 15,4Z" />
                             </svg>
                         </div>
+                        <div class="h-10 w-10 flex justify-center items-center cursor-pointer" on:click={()=>{
+                            emploi.description += "<exemple@gmail.com> "
+                            renderHTML()
+                        }}>
+                            <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+                                <path fill="currentColor" d="M2 6V20H20V22H2C.895 22 0 21.11 0 20V6H2M24 4C24 2.9 23.1 2 22 2H6C4.9 2 4 2.9 4 4V16C4 17.1 4.9 18 6 18H22C23.1 18 24 17.1 24 16V4M22 4L14 9L6 4H22M22 16H6V6L14 11L22 6V16Z" />
+                            </svg>
+                        </div>
+                        
                     </div>
                     <div class="w-full h-full">
                         <textarea bind:value={emploi.description} on:input={renderHTML} class="w-full h-full p-2 resize-none outline-none" placeholder="Ex: Nous somme à la recherche d'un designer avec au moins 2 années d'expérience..."></textarea>
+                        <input type="hidden" name="description" value={pHTML}>
+                        <input type="hidden" name="organization" value={orgaId}>
                     </div>
                 </div>
                 <!-- <input type="text" class="input input-bordered w-full h-[280px]" placeholder="Ex: Designer UI/UX"> -->
-                <div id="preview" bind:this={preview} class="min-h-0 bg-white border-[1px] px-4">
+                <div id="preview" bind:this={preview} class="min-h-0 bg-white border-[1px] px-4 max-w-full break-words">
 
                 </div>
             </div>
             <div class="h-[60px] w-full mb-10 flex items-center justify-end">
                 <button class="btn normal-case">Soumettre l'offre</button>
             </div>
-        </div>
+        </form>
     </div>
 </section>

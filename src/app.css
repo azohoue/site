@@ -32,49 +32,49 @@ body, :root{
 }
 
 /*  */
-#preview a{
+#description a, #preview a{
     text-decoration: underline;
     color: rgb(29, 29, 141);
     font-size: 18px;
 }
-#preview > h1{
+#description > h1, #preview > h1{
     font-weight: bold;
     font-size: 40px;
     margin: 40px 0px 20px 0px;
 }
-#preview > h2{
+#description > h2, #preview > h2{
     font-weight: bold;
     font-size: 32px;
     margin: 20px 0px 10px 0px;
 }
-#preview > h3{
+#description > h3, #preview > h3{
     font-weight: bold;
     font-size: 24px;
     margin: 10px 0px 10px 0px;
 }
-#preview > h4{
+#description > h4, #preview > h4{
     font-weight: bold;
     font-size: 20px;
     margin: 40px 0px 10px 0px;
 }
-#preview > h5{
+#description > h5, #preview > h5{
     font-weight: bold;
     font-size: 16px;
     margin: 40px 0px 10px 0px;
 }
-#preview > h6{
+#description > h6, #preview > h6{
     font-weight: bold;
     font-size: 12px;
     margin: 40px 0px 20px 0px;
 }
 
-#preview > ul{
+#description > ul, #preview > ul{
     width: 100%;
     list-style: disc;
     padding: 0px 40px;
     margin-bottom: 10px;
 }
-#preview > ol{
+#description > ol, #preview > ol{
     width: 100%;
     list-style: lower-roman;
     padding: 0px 40px;
