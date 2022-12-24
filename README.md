@@ -1,38 +1,46 @@
-# create-svelte
+<div align="center">
+<img src="/static/images/azohoue.png" width="150px" height="150px"/>
+<br/>
+<h1>azohoue</h1>
+</div>
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
+<div align="center">
+<img src="https://pocketbase.io/images/logo.svg"/> <img height="40px" width="40px" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Svelte_Logo.svg/1200px-Svelte_Logo.svg.png"/> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Tailwind_CSS_Logo.svg/2048px-Tailwind_CSS_Logo.svg.png" height="40px" width="40px" />
+</div>
 
-## Creating a project
+## C'est quoi azohoue ?
+azohoue - est un site communautaire d'offre et de demande d'emploi ! Accessible à tous gratuitement, il permet grâce à son interface simple et précis:
+* La visiualisation de la liste des offres d'emploi d'une région
+* De postuler depuis l'interface de l'application.
 
-If you're seeing this, you've probably already done this step. Congrats!
 
-```bash
-# create a new project in the current directory
-npm create svelte@latest
+## Interface utilisateur (employeur) 
 
-# create a new project in my-app
-npm create svelte@latest my-app
-```
+### Page de connexion
+![](/static/github/login-employer.png)
 
-## Developing
+### Page d'inscription
+![](/static/github/signup-employer.png)
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+### Création d'une offre d'emploi
+![](/static/github/create-offer.png)
 
-```bash
-npm run dev
+### Page d'acceuil de l'application
+![](/static/github/home-employer.png)
 
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
 
-## Building
+## Interface utilisateur (demandeur d'emploi)
 
-To create a production version of your app:
+### Page de connexion
+![](/static/github/login-user.png)
 
-```bash
-npm run build
-```
+### Page d'inscription
+![](/static/github/signup-user.png)
 
-You can preview the production build with `npm run preview`.
+### Page d'acceuil de l'application
+![](/static/github/home-user.png)
 
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+### Visualiser une offre d'emploi
+![](/static/github/job-details-user.png)
+
+INFO: Les offres d'emploi sont analysé avant d'êtres poster sur le site pour eviter les spams, ce qui améliore grandement la qualité des offres d'emploi.
