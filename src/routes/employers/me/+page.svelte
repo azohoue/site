@@ -1,9 +1,8 @@
 <script lang="ts">
     import type { PageData } from './$types';
-    
     export let data: PageData;
-
     const jobs = data.jobs.jobs
+
 </script>
 <section id="acceuil" class="h-full w-full flex flex-col items-center py-10 px-4 sm:px-0 overflow-x-hidden overflow-y-auto">
     <div class="w-full sm:w-[60vw] flex flex-col gap-y-5">
@@ -35,7 +34,7 @@
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M15.042 21.672L13.684 16.6m0 0l-2.51 2.225.569-9.47 5.227 7.917-3.286-.672zM12 2.25V4.5m5.834.166l-1.591 1.591M20.25 10.5H18M7.757 14.743l-1.59 1.59M6 10.5H3.75m4.007-4.243l-1.59-1.59" />
                                   </svg>
-                                  <span>300</span>
+                                  <span>{job.views.length}</span>
                             </div>
                             <div class="flex gap-x-1 text-sm items-center">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
@@ -77,7 +76,7 @@
                         </div>
                         <!-- bouton modifier -->
                         <div>
-                            <button class="normal-case btn btn-outline btn-error">Modifier</button>
+                            <button class="normal-case px-[12px] py-2 border-[1px] rounded-md text-red-400 hover:text-white hover:bg-red-400 border-[#F87171] transition-all">Modifier</button>
                         </div>
                      </div>
                  </div>

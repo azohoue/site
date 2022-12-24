@@ -39,7 +39,7 @@
 <!--  -->
 <section class="grid grid-cols-1 md:grid-cols-2 h-screen">
   <div class="w-full px-4 xl:px-8 py-20 mx-auto bg-white flex flex-col justify-center gap-y-4">
-    <h1 class="mb-4 mt-3 text-2xl font-extrabold leading-snug tracking-tight text-left text-gray-900 md:text-4xl">Inscrivez-vous <span class="underline text-red-400">gratuitement</span></h1>
+    <h1 class="mb-4 mt-3 text-2xl font-extrabold leading-snug tracking-tight text-left text-gray-900 md:text-4xl">Créer <span class="underline text-red-400">gratuitement</span> un compte pour votre entreprise</h1>
     <form class="space-y-5" method="POST" use:enhance={({form, data, action, cancel})=>{
       // With use enhance, the redirect is not set from back ! Redirects are throw manually
       // Run on submitting 

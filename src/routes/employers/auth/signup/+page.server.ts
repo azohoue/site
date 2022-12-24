@@ -5,7 +5,6 @@ import { validerEmail, validerMotDePasse, validerNom, validerOrganisation, valid
 
 import { fail, type Actions } from "@sveltejs/kit";
 
-// let userError = false
 const payloadError = {
     firstname: "",
     lastname: "",

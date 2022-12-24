@@ -2,7 +2,7 @@
   import { enhance } from "$app/forms";
 	import { goto } from "$app/navigation";
   import { toast } from '@zerodevx/svelte-toast'
-  let sbt;
+  let sbt:any;
 
   let user_input:any = {
     email:null,
@@ -26,7 +26,7 @@
       </svg>
       <a href="/" class="normal-case text-xl font-semibold text-[20px] h-fit text-red-400">azohoue</a>
     </div>
-    <h1 class="mb-4 -mt-3 text-2xl font-extrabold leading-snug tracking-tight text-left text-gray-900 md:text-4xl">Connexion au compte</h1>
+    <h1 class="mb-4 -mt-3 text-2xl font-extrabold leading-snug tracking-tight text-left text-gray-900 md:text-4xl">Mon compte <span class="underline text-red-400">entreprise</span></h1>
 
     <form method="POST" class="space-y-5" use:enhance={ ({form, cancel})=> {
         sbt.classList.add("loading")
@@ -81,10 +81,11 @@
         <input bind:this={user_input.password} bind:value={input_value.password} required class="input input-bordered w-full" type="password" placeholder="••••••••" name="password"  />
         <span bind:this={error_input.password} class="text-xs text-red-500"></span>
       </label>
-      <input bind:this={sbt} type="submit" class="btn loading normal-case" value="Me connecter" />
+      <input bind:this={sbt} type="submit" class="btn btn-error text-white normal-case cursor-pointer" value="Me connecter" />
     </form>
-    <div class="pt-6 text-sm font-medium text-gray-700 border-t border-gray-200">
+    <div class="pt-6 flex gap-x-4 text-sm font-medium text-gray-700 border-t border-gray-200">
       <a href="/employers/auth/signup" class="text-red-400 hover:text-purple-900">Ouvrir un compte</a>
+      <a href="/users/auth/signin" class="text-gray-400 hover:text-purple-900">Je suis un utilisateur</a>
     </div>
   </div>
   <div class="h-full w-full hidden sm:flex relative">

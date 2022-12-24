@@ -7,7 +7,8 @@ export const createEmployer = async (pb: any, employer: any) => {
             email: employer.email,
             role: "employer",
             password: employer.password,
-            passwordConfirm: employer.password
+            passwordConfirm: employer.password,
+            emailVisibility: true
         })
     } catch {
         return {

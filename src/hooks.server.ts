@@ -33,7 +33,7 @@ export const handle = (async ({ event, resolve }) => {
         if (event.url.pathname.startsWith("/employers/me"))
             throw redirect(307, "/employers/auth/signin")
         if (event.url.pathname.startsWith("/users/me"))
-            throw redirect(308, "/users/auth/signin")
+            throw redirect(307, "/users/auth/signin")
     }
 
     const response = await resolve(event)

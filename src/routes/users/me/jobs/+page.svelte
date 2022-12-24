@@ -1,7 +1,7 @@
 <section id="job-view" class="h-full w-full flex justify-center px-4 xl:px-0 pt-10">
     <div class="w-full flex flex-col md:w-full xl:w-[90vw] h-28 gap-y-1">
         <div id="logo" class="h-fit w-full flex justify-start flex-col gap-y-2">
-            <img src="https://99designs-blog.imgix.net/blog/wp-content/uploads/2020/07/attachment_94444348-e1594735799301.png?auto=format&q=60&fit=max&w=930" class="h-[120px] w-[120px] rounded-md object-cover ring ring-offset-2" alt="">
+            <img src="https://99designs-blog.imgix.net/blog/wp-content/uploads/2020/07/attachment_94444348-e1594735799301.png?auto=format&q=60&fit=max&w=930" class="h-[120px] w-[120px] rounded-md object-cover ring ring-red-400 ring-offset-2" alt="">
             <h3 class="font-semibold text-md text-gray-400">azohoue</h3>
 
         </div>

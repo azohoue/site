@@ -6,7 +6,7 @@
 <div id="profile" class="py-10 px-4 sm:px-0 flex flex-col items-center gap-y-4 h-fit overflow-auto">
     <div id="user-profile" class="min-h-[360px] w-full sm:w-[640px] flex flex-col gap-5">
         <div id="user-profile-header">
-            <h3 class="text-md font-semibold">Informations personnelles</h3>
+            <h3 class="text-md font-semibold text-red-400">Informations personnelles</h3>
             <p class="text-sm text-[#8A8FAC]">Veuillez saisir vos informations personnelles pour nous permettre de vous joindre.</p>
         </div>
         <form id="user-profile-content" class="h-full w-full bg-white rounded-md border-[1px] border-[#A4A4A480] shadow-sm grid grid-rows-[1fr,72px]">
@@ -49,7 +49,7 @@
                 <label class="label">
                     <span class="label-text">Photo de profile (jpg, png)</span>
                 </label>
-                <input type="file" class="file-input w-full file-input-bordered" />
+                <input type="file" class="file-input  w-full file-input-bordered" />
                 <label class="label">
                     <!-- <span class="label-text-alt">Alt label</span> -->
                 </label>
@@ -59,15 +59,15 @@
             </div>
             <div id="form-submit" class="flex justify-end px-4 items-center gap-x-4 border-t-[1px]">
                 <!--  -->
-                <button class="text-red-500" type="reset">Annuler</button>
-                <button class=" btn normal-case">Modifier</button>
+                <button class="text-gray-500" type="reset">Annuler</button>
+                <button class=" px-3 py-2 border-[1px] border-[#F87171] rounded-md text-red-400 hover:bg-red-400 hover:text-white transition-all  normal-case">Modifier</button>
             </div>
         </form>
     </div>
 <!--  sm:w-[60vw] en bas de ca-->
     <div id="password-setting" class="min-h-[360px] w-full sm:w-[640px] flex flex-col gap-5">
         <div id="user-profile-header">
-            <h3 class="text-md font-semibold">Sécurité du compte</h3>
+            <h3 class="text-md font-semibold text-red-400">Sécurité du compte</h3>
             <p class="text-sm text-[#8A8FAC]">Modifier votre mot de passe en entrant les informations correspondantes.</p>
         </div>
         <!--  -->
@@ -84,33 +84,31 @@
                     </label>
                     </div>
                 </div>
-                <div class="w-full px-4">
-                    <div class="form-control w-full">
-                    <label class="label">
-                        <span class="label-text">Nouveau mot de passe</span>
-                    </label>
-                    <input type="password" placeholder="********" class="input input-bordered w-full" />
-                    <label class="label">
-                        <!-- <span class="label-text-alt">Alt label</span> -->
-                    </label>
-                    </div>
-                </div>
-                <div class="w-full px-4">
-                    <div class="form-control w-full">
-                    <label class="label">
-                        <span class="label-text">Confirmation du mot de passe</span>
-                    </label>
-                    <input type="password" placeholder="********" class="input input-bordered w-full" />
-                    <label class="label">
-                        <!-- <span class="label-text-alt">Alt label</span> -->
-                    </label>
-                    </div>
+                <div class="flex flex-col sm:flex-row sm:gap-4 px-4">
+                        <div class="form-control w-full">
+                        <label class="label">
+                            <span class="label-text">Nouveau mot de passe</span>
+                        </label>
+                        <input type="password" placeholder="********" class="input input-bordered w-full" />
+                        <label class="label">
+                            <!-- <span class="label-text-alt">Alt label</span> -->
+                        </label>
+                        </div>
+                        <div class="form-control w-full">
+                        <label class="label">
+                            <span class="label-text">Confirmation du mot de passe</span>
+                        </label>
+                        <input type="password" placeholder="********" class="input input-bordered w-full" />
+                        <label class="label">
+                            <!-- <span class="label-text-alt">Alt label</span> -->
+                        </label>
+                        </div>
                 </div>
             </div>
             <div id="form-submit" class="flex justify-end px-4 items-center gap-x-4 border-t-[1px]">
                 <!--  -->
                 <button>Annuler</button>
-                <button class="btn btn-error text-white">Changer le mot de passe</button>
+                <button class="px-3 py-2 border-[1px] border-[#F87171] rounded-md text-red-400 hover:bg-red-400 hover:text-white transition-all  normal-case">Changer le mot de passe</button>
             </div>
         </form>
     </div>

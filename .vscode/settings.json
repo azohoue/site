@@ -1,0 +1,6 @@
+{
+    "editor.minimap.side": "right",
+    "terminal.integrated.tabs.location": "left",
+    "workbench.editor.tabCloseButton": "right",
+    "workbench.sideBar.location": "left"
+}
