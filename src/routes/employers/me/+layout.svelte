@@ -1,12 +1,13 @@
 <script lang="ts">
 	import Header from '$lib/components/employers/header.svelte';
-	export let data:import('./$types').PageData
+	export let data: import('./$types').PageData;
 
 	let content = {
 		name: data.organization.name,
 		email: data.employer.email,
-		picUrl: data.organization.logo
-	}
+		picUrl: data.organization.logo,
+		id: data.organization.id
+	};
 </script>
 
 <section id="me" class="min-h-full h-fit w-full flex">

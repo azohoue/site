@@ -43,6 +43,8 @@ export const actions = ({
         const rst = await createUser(locals.pb, user)
         if (rst.success) {
             // TODO: envoyer le mail de vérification
+            await locals.pb.collection("users").requestVerification(user.email)
+            // Envoie d'un email de vérification sur le compte de l'utilisateur.
             return {}
         } else {
             fail(401)

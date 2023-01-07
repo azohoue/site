@@ -39,6 +39,14 @@ export const actions = ({
                     message: "Le compte associé à ce email est un compte utilisateur. Veuillez-vous connecter en tant qu'utilisateur."
                 })
             }
+
+            if (record.verified == false) {
+                locals.pb.authStore.clear()
+                return fail(403, {
+                    message: "Veuillez vérifier votre adresse email avant de pouvoir vous connecter."
+                })
+            }
+
             await locals.pb.collection("organizations").getFirstListItem(`holder='${record.id}'`)
             return {}
         } catch (e) {

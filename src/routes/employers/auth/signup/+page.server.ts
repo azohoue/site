@@ -58,10 +58,11 @@ export const actions = ({
                     })
                     // On se déconnecte du compte.
                     locals.pb.authStore.clear()
+                    // TODO: envoyer le mail de vérification
+                    await locals.pb.collection("users").requestVerification(employer.email)
                     // On retourne le statut de succès à l'utilisateur
                     return {
                         success: true,
-                        ini: "test"
                     }
                 } else {
                     // La création du compte n'a pas pu se faire, on retourne un fail

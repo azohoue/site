@@ -33,6 +33,12 @@ export const actions = ({
                     message: "Le compte associé à ce email est un compte d'entreprise. Veuillez-vous connecter en tant qu'employeur."
                 })
             }
+            if (record.verified == false) {
+                locals.pb.authStore.clear()
+                return fail(403, {
+                    message: "Veuillez vérifier votre adresse email avant de pouvoir vous connecter."
+                })
+            }
         } catch (e) {
             return fail(401, {
                 message: "Erreur ! Login ou mot de passe incorrect"

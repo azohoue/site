@@ -27,13 +27,13 @@ export const load = (async ({ locals }) => {
                     d.created = "Il y a " + DF + (DF == 1 ? " heure" : " heures")
                 } else {
                     if ((difference / 86400000) < 30) {
-                        const DF = Math.floor(difference / 3600000)
+                        const DF = Math.floor(difference / 86400000)
                         d.created = "Il y a " + DF + (DF == 1 ? " jour" : " jours")
                     } else {
                         if ((difference / 2629800000) < 12) {
                             d.created = "Il y a " + Math.floor(difference / 2629800000) + " mois"
                         } else {
-                            d.created = "Il y a " + Math.floor(difference / 31557600000) + "années(s)"
+                            d.created = "Il y a " + Math.floor(difference / 31557600000) + "année(s)"
                         }
                     }
                 }
