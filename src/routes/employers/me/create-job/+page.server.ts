@@ -20,7 +20,8 @@ export const actions = ({
                 contract: job.contract,
                 description: job.description,
                 organization: job.organization,
-                status: "En attente"
+                status: "En attente",
+                views: 0
             })
             return {} // <- it's the return data
         }

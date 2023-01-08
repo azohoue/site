@@ -39,11 +39,11 @@ export const actions = ({
         }
 
         const canIUseMail = await isMailAvailable(locals.pb, employer.email)
-        let canIUseOrga;
+        const canIUseOrga = await isOrgaAvailable(locals.pb, employer.organization)
+
         if (canIUseMail) {
             // Si je peux utiliser le mail,
             // on regarde si je peux utiliser le nom de l'organisation
-            canIUseOrga = await isOrgaAvailable(locals.pb, employer.organization)
             if (canIUseOrga) {
                 // Create account here ! 
                 const result = await createEmployer(locals.pb, employer)
@@ -54,7 +54,8 @@ export const actions = ({
                     // On lui crée l'organisation
                     await locals.pb.collection("organizations").create({
                         name: employer.organization,
-                        holder: locals.pb.authStore.model.id
+                        holder: locals.pb.authStore.model.id,
+                        badge: false
                     })
                     // On se déconnecte du compte.
                     locals.pb.authStore.clear()
@@ -66,7 +67,7 @@ export const actions = ({
                     }
                 } else {
                     // La création du compte n'a pas pu se faire, on retourne un fail
-                    fail(401)
+                    return fail(401)
                 }
             }
         }

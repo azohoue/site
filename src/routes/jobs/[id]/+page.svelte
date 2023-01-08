@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { PUBLIC_API_URL } from '$env/static/public';
 	import type { PageData } from './$types';
 	export let data: PageData;
 
@@ -7,7 +8,10 @@
 	let logo = job.expand.organization.logo;
 </script>
 
-<section id="job-view" class="bg-[#f8f9fd] h-fit w-full flex justify-center px-4 xl:px-0 pt-10">
+<section
+	id="job-view"
+	class="bg-[#f8f9fd] h-fit min-h-screen w-full flex justify-center px-4 xl:px-0 pt-10"
+>
 	<div class="w-full flex flex-col md:w-full mb-40 sm:mb-0 xl:w-[90vw] min-h-28 h-fit gap-y-4">
 		<a href="/" class="text-red-400 flex gap-x-1">
 			<svg
@@ -29,9 +33,7 @@
 		</a>
 		<div id="logo" class="h-fit w-full flex justify-start flex-col gap-y-2">
 			<img
-				src={logo
-					? `http://127.0.0.1:8090/api/files/organizations/${id}/${logo}`
-					: '/images/empty.jpg'}
+				src={logo ? `${PUBLIC_API_URL}/api/files/organizations/${id}/${logo}` : '/images/empty.jpg'}
 				class="h-[120px] w-[120px] rounded-md object-cover ring ring-red-400 ring-offset-2"
 				alt=""
 			/>
@@ -52,6 +54,28 @@
 					</svg>
 				{/if}
 			</h3>
+			<div class="text-sm text-[#A4A4A4] flex items-center gap-x-1">
+				<svg
+					xmlns="http://www.w3.org/2000/svg"
+					fill="none"
+					viewBox="0 0 24 24"
+					stroke-width="1.5"
+					stroke="currentColor"
+					class="w-4 h-4"
+				>
+					<path
+						stroke-linecap="round"
+						stroke-linejoin="round"
+						d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z"
+					/>
+					<path
+						stroke-linecap="round"
+						stroke-linejoin="round"
+						d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+					/>
+				</svg>
+				<span>{job.views > 1 ? job.views + ' vus' : job.views + ' vu'}</span>
+			</div>
 		</div>
 		<div id="job-details" class="grid grid-cols-1 sm:grid-cols-[2fr,0.8fr]">
 			<div class="flex flex-col w-full py-5 md:pr-4 gap-y-5 ">

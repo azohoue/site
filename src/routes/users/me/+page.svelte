@@ -1,17 +1,25 @@
 <script lang="ts">
-	import { fade } from 'svelte/transition';
+	import { page } from '$app/stores';
+	import { enhance } from '$app/forms';
+	import { fade, fly } from 'svelte/transition';
 	import type { PageData } from './$types';
 
 	export let data: PageData;
-	// console.log(data);
-	const jobs = data.jobs.items;
+	export let form: FormData;
+
+	let jobs = data.jobs.items;
 
 	let search_state = false;
-	let filters_state = {
+	let filters: {
+		location: Array<string>;
+		salary: Array<string>;
+		contract: Array<string>;
+	} = {
 		location: [],
 		salary: [],
 		contract: []
 	};
+	let query: string = '';
 
 	let modal_content = {
 		job_name: '',
@@ -22,48 +30,111 @@
 		job_date: '',
 		job_organization_name: ''
 	};
+	const populateLocationFilter = () => {
+		if (filters.location.length == 0) jobs = data.jobs.items;
+		else {
+			if (filters.location.includes('all')) {
+				filters.location = ['all'];
+				jobs = data.jobs.items;
+			} else {
+				jobs = data.jobs.items.filter((job: any) => {
+					return filters.location.includes(job.location);
+				});
+			}
+		}
+	};
+	const populateSalaryFilter = () => {
+		if (filters.salary.length == 0) jobs = data.jobs.items;
+		else {
+			if (filters.salary.includes('Autres')) {
+				filters.salary = ['Autres'];
+				// jobs = data.jobs.items;
+			}
+			jobs = data.jobs.items.filter((job: any) => {
+				return filters.salary.includes(job.salary);
+			});
+		}
+	};
+	const populateContractFilter = () => {
+		if (filters.location.length == 0) jobs = data.jobs.items;
+		else {
+			if (filters.location.includes('allc')) {
+				filters.location = ['allc'];
+				jobs = data.jobs.items;
+			} else {
+				jobs = data.jobs.items.filter((job: any) => {
+					return filters.location.includes(job.location);
+				});
+			}
+		}
+	};
 </script>
 
 <section id="user-home" class="w-full h-fit pt-10 px-4 xl:px-0 flex flex-col items-center gap-10">
 	<div class="h-14 w-full xl:w-[80vw]">
 		<!-- <input type="text" class="input h-full w-full input-bordered rounded-md shadow-md "> -->
-		<div class="flex rounded-md shadow-sm">
+		<form
+			use:enhance={({ form, data, action, cancel }) => {
+				return async ({ update, result }) => {
+					if (result.status == 200) {
+						search_state = true;
+						jobs = result.data.items;
+					} else {
+						if (result.status == 400) {
+							query = '';
+						}
+					}
+					if (query.length == 0) {
+						search_state = false;
+					}
+				};
+			}}
+			method="post"
+			action="?/search"
+			class="flex rounded-md shadow-sm"
+		>
 			<input
+				bind:value={query}
 				type="text"
+				name="query"
 				placeholder="Recherche une offre d'emploi. Ex: Développeur Web"
 				class="py-3 outline-red-400 px-4 block w-full border-gray-200 shadow-sm rounded-l-md text-sm focus:z-10 focus:border-red-500 focus:ring-red-500 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400"
 			/>
-			{#if search_state}
-				<button
-					transition:fade
-					class="inline-flex flex-shrink-0 justify-center items-center h-[2.875rem] w-[100px] rounded-r-md border border-transparent font-semibold bg-red-400 text-white hover:bg-red-600 focus:z-10 focus:outline-none focus:ring-2 focus:ring-red-500 transition-all text-sm"
+			<button
+				type="submit"
+				class="shadow-sm inline-flex flex-shrink-0 justify-center items-center h-[2.875rem] w-[2.875rem] rounded-r-md border border-transparent font-semibold bg-red-400 text-white hover:bg-red-600 focus:z-10 focus:outline-none focus:ring-2 focus:ring-red-500 transition-all text-sm"
+			>
+				<svg
+					class="h-4 w-4"
+					xmlns="http://www.w3.org/2000/svg"
+					width="16"
+					height="16"
+					fill="currentColor"
+					viewBox="0 0 16 16"
 				>
-					<span>Annuler la recherche</span>
-				</button>
-			{:else}
-				<button
-					type="button"
-					class="shadow-sm inline-flex flex-shrink-0 justify-center items-center h-[2.875rem] w-[2.875rem] rounded-r-md border border-transparent font-semibold bg-red-400 text-white hover:bg-red-600 focus:z-10 focus:outline-none focus:ring-2 focus:ring-red-500 transition-all text-sm"
-				>
-					<svg
-						class="h-4 w-4"
-						xmlns="http://www.w3.org/2000/svg"
-						width="16"
-						height="16"
-						fill="currentColor"
-						viewBox="0 0 16 16"
-					>
-						<path
-							d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"
-						/>
-					</svg>
-				</button>
-			{/if}
-		</div>
+					<path
+						d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"
+					/>
+				</svg>
+			</button>
+		</form>
+		{#if search_state}
+			<button
+				on:click={() => {
+					jobs = data.jobs.items;
+					search_state = false;
+					query = '';
+				}}
+				transition:fade
+				class="py-4 text-xs text-red-400 cursor-pointer font-semibold"
+			>
+				Annuler la recherche
+			</button>
+		{/if}
 	</div>
 	<!--  -->
 	<div
-		class="w-full h-fit xl:w-[80vw] sm:grid sm:grid-cols-[280px,1fr] 2xl:grid-cols-[280px,1fr,280px]"
+		class="w-full h-fit xl:w-[80vw] sm:grid sm:grid-cols-[280px,1fr] xl:grid-cols-[280px,1fr,280px]"
 	>
 		<div class="filter-container flex-col items-start hidden sm:flex">
 			<div id="filter-header" class="flex gap-x-1 justify-center items-center mb-4">
@@ -88,65 +159,155 @@
 					<h3 class="text-md font-semibold text-red-400">Localisation</h3>
 					<div id="location-values" class="flex flex-col gap-y-4">
 						<div class="flex gap-x-1">
-							<input id="50.000F - 100.000F" type="checkbox" class="checkbox" />
-							<label for="50.000F - 100.000F" class=" text-gray-400 select-none">Bénin</label>
+							<input
+								value="Bénin"
+								id="Bénin"
+								bind:group={filters.location}
+								on:change={populateLocationFilter}
+								type="checkbox"
+								class="checkbox"
+							/>
+							<label for="Bénin" class=" text-gray-400 select-none">Bénin</label>
 						</div>
 						<div class="flex gap-x-1">
-							<input type="checkbox" class="checkbox" />
-							<span class=" text-gray-400 select-none">Burkina Faso</span>
+							<input
+								value="Burkina Faso"
+								id="Burkina Faso"
+								bind:group={filters.location}
+								on:change={populateLocationFilter}
+								type="checkbox"
+								class="checkbox"
+							/>
+							<label for="Burkina Faso" class="text-gray-400 select-none">Burkina Faso</label>
 						</div>
 						<div class="flex gap-x-1">
-							<input type="checkbox" class="checkbox" />
-							<span class=" text-gray-400 select-none">Côte d'ivoire</span>
+							<input
+								value="Côte d'ivoire"
+								id="Côte d'ivoire"
+								bind:group={filters.location}
+								on:change={populateLocationFilter}
+								type="checkbox"
+								class="checkbox"
+							/>
+							<label for="Côte d'ivoire" class=" text-gray-400 select-none">Côte d'ivoire</label>
 						</div>
 						<div class="flex gap-x-1">
-							<input type="checkbox" class="checkbox" />
-							<span class=" text-gray-400 select-none">Mali</span>
+							<input
+								value="Mali"
+								id="Mali"
+								bind:group={filters.location}
+								on:change={populateLocationFilter}
+								type="checkbox"
+								class="checkbox"
+							/>
+							<label for="Mali" class="text-gray-400 select-none">Mali</label>
 						</div>
 						<div class="flex gap-x-1">
-							<input type="checkbox" class="checkbox" />
-							<span class=" text-gray-400 select-none">Sénégal</span>
+							<input
+								value="Sénégal"
+								id="Sénégal"
+								bind:group={filters.location}
+								on:change={populateLocationFilter}
+								type="checkbox"
+								class="checkbox"
+							/>
+							<label for="Sénégal" class=" text-gray-400 select-none">Sénégal</label>
 						</div>
 						<div class="flex gap-x-1">
-							<input type="checkbox" class="checkbox" />
-							<span class=" text-gray-400 select-none">Togo</span>
+							<input
+								value="Togo"
+								id="Togo"
+								bind:group={filters.location}
+								on:change={populateLocationFilter}
+								type="checkbox"
+								class="checkbox"
+							/>
+							<label for="Togo" class=" text-gray-400 select-none">Togo</label>
 						</div>
 						<div class="flex gap-x-1">
-							<input type="checkbox" class="checkbox" />
-							<span class=" text-gray-400 select-none">Non spécifié</span>
+							<input
+								value="all"
+								id="all"
+								bind:group={filters.location}
+								on:change={populateLocationFilter}
+								type="checkbox"
+								class="checkbox"
+							/>
+							<label for="all" class=" text-gray-400 select-none">Non spécifié</label>
 						</div>
 					</div>
 				</div>
 				<!--  -->
-				<div id="location-filter" class="flex flex-col gap-2">
+				<div id="salary-filter" class="flex flex-col gap-2">
 					<h3 class="text-md font-semibold text-red-400">Salaire</h3>
-					<div id="location-values" class="flex flex-col gap-y-4">
+					<div id="salary-values" class="flex flex-col gap-y-4">
 						<div class="flex gap-x-1">
-							<input id="50.000F - 100.000F" type="checkbox" class="checkbox" />
+							<input
+								bind:group={filters.salary}
+								on:change={populateSalaryFilter}
+								id="50.000F - 100.000F"
+								value="50.000F - 100.000F"
+								type="checkbox"
+								class="checkbox"
+							/>
 							<label for="50.000F - 100.000F" class=" text-gray-400 select-none"
 								>50.000F - 100.000F</label
 							>
 						</div>
 						<div class="flex gap-x-1">
-							<input type="checkbox" class="checkbox" />
-							<span class=" text-gray-400 select-none">100.000F - 200.000F</span>
+							<input
+								bind:group={filters.salary}
+								on:change={populateSalaryFilter}
+								type="checkbox"
+								class="checkbox"
+								id="100.000F - 200.000F"
+								value="100.000F - 200.000F"
+							/>
+							<label for="100.000F - 200.000F" class=" text-gray-400 select-none"
+								>100.000F - 200.000F</label
+							>
 						</div>
 						<div class="flex gap-x-1">
-							<input type="checkbox" class="checkbox" />
-							<span class=" text-gray-400 select-none">200.000F - 500.000F</span>
+							<input
+								bind:group={filters.salary}
+								on:change={populateSalaryFilter}
+								type="checkbox"
+								class="checkbox"
+								id="200.000F - 500.000F"
+								value="200.000F - 500.000F"
+							/>
+							<label for="200.000F - 500.000F" class=" text-gray-400 select-none"
+								>200.000F - 500.000F</label
+							>
 						</div>
 						<div class="flex gap-x-1">
-							<input type="checkbox" class="checkbox" />
-							<span class=" text-gray-400 select-none">500.000F - 900.000F</span>
+							<input
+								bind:group={filters.salary}
+								on:change={populateSalaryFilter}
+								type="checkbox"
+								class="checkbox"
+								id="500.000F - 900.000F"
+								value="500.000F - 900.000F"
+							/>
+							<label for="500.000F - 900.000F" class=" text-gray-400 select-none"
+								>500.000F - 900.000F</label
+							>
 						</div>
 						<div class="flex gap-x-1">
-							<input type="checkbox" class="checkbox" />
-							<span class=" text-gray-400 select-none">Plus</span>
+							<input
+								bind:group={filters.salary}
+								on:change={populateSalaryFilter}
+								type="checkbox"
+								class="checkbox"
+								value="Autres"
+								id="Autres"
+							/>
+							<label for="Autres" class=" text-gray-400 select-none">Plus</label>
 						</div>
 					</div>
 				</div>
 				<!--  -->
-				<div id="location-filter" class="flex flex-col gap-2">
+				<div id="contract-filter" class="flex flex-col gap-2">
 					<h3 class="text-md font-semibold text-red-400">Type de contrat</h3>
 					<div id="location-values" class="flex flex-col gap-y-4">
 						<div class="flex gap-x-1">
@@ -159,7 +320,7 @@
 						</div>
 						<div class="flex gap-x-1">
 							<input type="checkbox" class="checkbox" />
-							<span class=" text-gray-400 select-none">Contrat d'apprentissage</span>
+							<span class=" text-gray-400 select-none">Stage</span>
 						</div>
 					</div>
 				</div>
@@ -181,12 +342,15 @@
 			<div id="list" class="w-full flex flex-col gap-y-4">
 				{#each jobs as job}
 					<div
+						in:fly={{
+							x: -200
+						}}
 						class="bg-white w-full h-[184px] border-[1px] rounded-md shadow-sm p-4 flex flex-col justify-center gap-2"
 					>
 						<div class="flex justify-between">
 							<h6 class="text-base font-semibold text-gray-400 flex items-center gap-x-1">
 								<span class="capitalize">{job.expand.organization.name}</span>
-								{#if true}
+								{#if job.expand.organization.badge}
 									<svg
 										xmlns="http://www.w3.org/2000/svg"
 										viewBox="0 0 24 24"
@@ -267,7 +431,7 @@
 						<div class="flex justify-between items-end text-[#EE786B]">
 							<a href="/users/me/jobs/{job.id}" class="cursor-pointer">Voir plus de détails > </a>
 							<!-- svelte-ignore a11y-click-events-have-key-events -->
-							<label
+							<!-- <label
 								on:click={() => {
 									modal_content.job_name = job.name;
 									modal_content.job_contract = job.contract;
@@ -280,9 +444,21 @@
 								for="job-action"
 								class="cursor-pointer border-[1px] font-semibold rounded-md px-[16px] py-[7.2px] border-[#EE786B] text-[#EE786B] normal-case"
 								>Postuler</label
+							> -->
+							<a
+								href={'mailto:' +
+									job.expand.organization.email +
+									'?subject=Candidature pour le poste de ' +
+									job.name +
+									'&body=Je postule pour la candidature suivante: https://azohoue.ga/jobs/' +
+									job.id}
+								class="cursor-pointer border-[1px] font-semibold rounded-md px-[16px] py-[7.2px] border-[#EE786B] text-[#EE786B] normal-case"
+								>Postuler</a
 							>
 						</div>
 					</div>
+				{:else}
+					<i transition:fade>Aucune offre à afficher</i>
 				{/each}
 			</div>
 		</div>

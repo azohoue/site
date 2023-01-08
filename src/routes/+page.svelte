@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { PUBLIC_API_URL } from '$env/static/public';
 	import type { PageData } from './$types';
 	export let data: PageData;
 	const jobs = data.jobs;
@@ -119,12 +120,14 @@
 			{#each jobs.items as job}
 				<div
 					class:important={job.expand.organization.badge}
-					class="h-28 w-full border-[1px] rounded-md bg-white grid grid-cols-[60px,1fr,80px] sm:grid-cols-[80px,1fr,80px] px-2 sm:px-4 gap-x-2"
+					class="h-28 w-full border-[1px] rounded-md bg-white grid grid-cols-[60px,1fr,80px] sm:grid-cols-[80px,1fr,80px] px-4 sm:px-4 gap-x-2"
 				>
 					<div class="h-full w-full flex justify-center items-center">
 						<img
-							class="w-full h-[60px] sm:h-20 rounded-md object-cover"
-							src="/images/empty.jpg"
+							class="w-full h-[60px] sm:h-20 rounded-md object-cover ring-[1px] ring-[#e5e7eb]"
+							src={job.expand.organization.logo
+								? `${PUBLIC_API_URL}/api/files/organizations/${job.expand.organization.id}/${job.expand.organization.logo}`
+								: '/images/empty.jpg'}
 							alt=""
 						/>
 					</div>
@@ -228,12 +231,12 @@
 					<div class="h-full w-full flex items-center justify-center">
 						<a
 							class="text-sm px-0 flex justify-center items-center py-2 w-full border-red-400 border-[1px] text-red-400 font-semibold rounded-md"
-							href={'https://azohoue.ga/jobs/' + job.id}>Voir l'offre</a
+							href={'/jobs/' + job.id}>Voir l'offre</a
 						>
 					</div>
 				</div>
 			{:else}
-				<!-- empty list -->
+				<i>Aucune offre disponible pour le moment.</i>
 			{/each}
 		</div>
 	</div>

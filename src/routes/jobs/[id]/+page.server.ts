@@ -16,6 +16,12 @@ export const load = (async ({ params, locals }) => {
         job = await locals.pb.collection("jobs").getFirstListItem(`id="${params.id}"`, {
             expand: 'organization'
         })
+        // Augmenter le nombre de vu
+        job.views += 1;
+        const data = {
+            "views": job.views
+        };
+        await locals.pb.collection("jobs").update(job.id, data)
         return {
             job: JSON.parse(JSON.stringify(job))
         }

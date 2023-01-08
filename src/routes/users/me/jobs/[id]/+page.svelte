@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { PUBLIC_API_URL } from '$env/static/public';
 	import type { PageData } from './$types';
 	export let data: PageData;
 
@@ -16,13 +17,49 @@
 	<div class="w-full flex flex-col md:w-full xl:w-[90vw] h-28 gap-y-1">
 		<div id="logo" class="h-fit w-full flex justify-start flex-col gap-y-2">
 			<img
-				src={logo
-					? `http://127.0.0.1:8090/api/files/organizations/${id}/${logo}`
-					: '/images/azohoue.png'}
+				src={logo ? `${PUBLIC_API_URL}/api/files/organizations/${id}/${logo}` : '/images/empty.jpg'}
 				class="h-[120px] w-[120px] rounded-md object-cover ring ring-red-400 ring-offset-2"
 				alt=""
 			/>
-			<h3 class="font-semibold text-md text-gray-400">{job.expand.organization.name}</h3>
+			<h3 class="font-semibold text-md text-gray-400 capitalize gap-x-1 flex items-center">
+				{job.expand.organization.name}
+				{#if job.expand.organization.badge}
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						viewBox="0 0 24 24"
+						fill="#DC2626"
+						class="w-5 h-5"
+					>
+						<path
+							fill-rule="evenodd"
+							d="M8.603 3.799A4.49 4.49 0 0112 2.25c1.357 0 2.573.6 3.397 1.549a4.49 4.49 0 013.498 1.307 4.491 4.491 0 011.307 3.497A4.49 4.49 0 0121.75 12a4.49 4.49 0 01-1.549 3.397 4.491 4.491 0 01-1.307 3.497 4.491 4.491 0 01-3.497 1.307A4.49 4.49 0 0112 21.75a4.49 4.49 0 01-3.397-1.549 4.49 4.49 0 01-3.498-1.306 4.491 4.491 0 01-1.307-3.498A4.49 4.49 0 012.25 12c0-1.357.6-2.573 1.549-3.397a4.49 4.49 0 011.307-3.497 4.49 4.49 0 013.497-1.307zm7.007 6.387a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z"
+							clip-rule="evenodd"
+						/>
+					</svg>
+				{/if}
+			</h3>
+			<div class="text-sm text-[#A4A4A4] flex items-center gap-x-1">
+				<svg
+					xmlns="http://www.w3.org/2000/svg"
+					fill="none"
+					viewBox="0 0 24 24"
+					stroke-width="1.5"
+					stroke="currentColor"
+					class="w-4 h-4"
+				>
+					<path
+						stroke-linecap="round"
+						stroke-linejoin="round"
+						d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z"
+					/>
+					<path
+						stroke-linecap="round"
+						stroke-linejoin="round"
+						d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+					/>
+				</svg>
+				<span>{job.views > 1 ? job.views + ' vus' : job.views + ' vu'}</span>
+			</div>
 		</div>
 		<div id="job-details" class="grid grid-cols-1 sm:grid-cols-[2fr,1.5fr]">
 			<div class="flex flex-col w-full py-5 md:pr-4 gap-y-5 ">
@@ -143,21 +180,26 @@
 					<!--  -->
 				</div>
 				<div class="flex justify-between items-end text-[#EE786B]">
-					<label
-						for="job-action"
+					<a
+						href={'mailto:' +
+							job.expand.organization.email +
+							'?subject=Candidature pour le poste de ' +
+							job.name +
+							'&body=Je postule pour la candidature suivante: https://azohoue.ga/jobs/' +
+							job.id}
 						class="cursor-pointer border-[1px] font-semibold rounded-md px-[16px] py-[7.2px] border-[#EE786B] text-[#EE786B] normal-case"
-						>Postuler pour cet offre</label
+						>Postuler pour cet offre</a
 					>
 				</div>
 			</div>
-			<div class="w-full flex flex-col gap-y-4 py-5">
-				<h3 class="font-semibold text-base">Voir les autres offres</h3>
+			<div class="w-full flex flex-col gap-y-4 py-5 mb-20">
+				<h3 class="font-semibold text-base">Offres annexes:</h3>
 				{#each othersJobs as othersJob}
 					<div
 						class="bg-white w-full h-[184px] border-[1px] rounded-md shadow-sm p-4 flex flex-col justify-center gap-2"
 					>
 						<div class="flex justify-between">
-							<h6 class="text-base font-semibold text-gray-400">
+							<h6 class="text-base font-semibold text-gray-400 capitalize">
 								{othersJob.expand.organization.name}
 							</h6>
 						</div>
@@ -224,19 +266,26 @@
 							<!-- <a href={'/users/me/jobs/' + othersJob.id} class="cursor-pointer"
 								>Voir plus de détails >
 							</a> -->
-							<label
-								for="job-action"
+							<a
+								href={'mailto:' +
+									othersJob.expand.organization.email +
+									'?subject=Candidature pour le poste de ' +
+									othersJob.name +
+									'&body=Je postule pour la candidature suivante: https://azohoue.ga/jobs/' +
+									othersJob.id}
 								class="cursor-pointer border-[1px] font-semibold rounded-md px-[16px] py-[7.2px] border-[#EE786B] text-[#EE786B] normal-case w-full text-center"
-								>Postuler</label
+								>Postuler pour cet offre</a
 							>
 						</div>
 					</div>
+				{:else}
+					<i>Aucune autre offre à afficher.</i>
 				{/each}
 			</div>
 		</div>
 	</div>
 	<!-- MODAL -->
-	<input type="checkbox" id="job-action" class="modal-toggle" />
+	<!-- <input type="checkbox" id="job-action" class="modal-toggle" />
 	<div class="modal modal-bottom sm:modal-middle ">
 		<div
 			class="modal-box h-[80vh] sm:h-[540px] grid grid-rows-[40px,1fr,60px] gap-y-4 p-4 bg-[#F8F9FD]"
@@ -362,5 +411,5 @@
 				<button class="btn w-full rounded-md">Postuler</button>
 			</div>
 		</div>
-	</div>
+	</div> -->
 </section>

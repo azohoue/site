@@ -1,6 +1,13 @@
+<script lang="ts">
+	import type { PageData } from './$types';
+
+	export let data: PageData;
+	const notifications: [any] = data.notifications;
+</script>
+
 <section class="w-full h-fit pt-10 px-4 xl:px-0 flex flex-col items-center gap-10">
 	<div class="h-fit w-full xl:w-[80vw] flex flex-col gap-8 mb-[100px]">
-		{#each Array(1) as _}
+		{#each notifications as notification}
 			<div
 				class="w-full h-[100px] bg-white border-[1px] rounded-md grid items-center grid-cols-[40px,1fr,40px] sm:grid-cols-[80px,1fr,60px] px-2 sm:px-4 pr-0 sm:pr-0"
 			>
