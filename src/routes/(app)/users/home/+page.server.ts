@@ -16,7 +16,7 @@ export const actions = (
             // Supprimer les cookies et les données
             locals.pb.authStore.clear()
             // Renvoyer vers le login
-            throw redirect(307, "/users/auth/signin")
+            throw redirect(307, "/auth/users/signin")
         },
 
         search: async ({ locals, request }) => {

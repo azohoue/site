@@ -96,7 +96,7 @@
 					} else {
 						// Si il n'y a pas d'erreur,
 						// console.log("Utilisateur connectée ! ");
-						goto('/employers/me');
+						goto('/employers');
 					}
 				};
 			}}
@@ -176,10 +176,10 @@
 			</div>
 		{/if}
 		<div class="pt-6 flex gap-x-4 text-sm font-medium text-gray-700 border-t border-gray-200">
-			<a href="/employers/auth/signup" class="text-red-400 hover:text-purple-900"
+			<a href="/auth/employers/signup" class="text-red-400 hover:text-purple-900"
 				>Ouvrir un compte</a
 			>
-			<a href="/users/auth/signin" class="text-gray-400 hover:text-purple-900"
+			<a href="/auth/users/signin" class="text-gray-400 hover:text-purple-900"
 				>Je suis un utilisateur</a
 			>
 		</div>

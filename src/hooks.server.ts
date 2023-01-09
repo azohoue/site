@@ -25,20 +25,20 @@ export const handle = (async ({ event, resolve }) => {
     if (event.locals.pb.authStore.isValid) {
         switch (event.locals.person.role) {
             case "user":
-                if (!event.url.pathname.startsWith("/users/me"))
-                    throw redirect(307, "/users/me")
+                if (!event.url.pathname.startsWith("/users"))
+                    throw redirect(307, "/users/home")
                 break;
             case "employer":
-                if (!event.url.pathname.startsWith("/employers/me"))
-                    throw redirect(307, "/employers/me")
+                if (!event.url.pathname.startsWith("/employers"))
+                    throw redirect(307, "/employers/home")
                 break;
         }
     } else {
         //  Redirect a not login user
-        if (event.url.pathname.startsWith("/employers/me"))
-            throw redirect(307, "/employers/auth/signin")
-        if (event.url.pathname.startsWith("/users/me"))
-            throw redirect(307, "/users/auth/signin")
+        if (event.url.pathname.startsWith("/employers"))
+            throw redirect(307, "/auth/employers/signin")
+        if (event.url.pathname.startsWith("/users"))
+            throw redirect(307, "/auth/users/signin")
     }
 
     const response = await resolve(event)

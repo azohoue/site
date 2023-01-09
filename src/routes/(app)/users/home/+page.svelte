@@ -2,7 +2,7 @@
 	import { page } from '$app/stores';
 	import { enhance } from '$app/forms';
 	import { fade, fly } from 'svelte/transition';
-	import type { PageData } from './$types';
+	import type { PageData } from '../jobs/$typess';
 
 	export let data: PageData;
 	export let form: FormData;

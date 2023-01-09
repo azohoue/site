@@ -23,9 +23,9 @@
 		</div>
 		<div class="tabs h-full hidden sm:flex ">
 			<a
-				href="/users/me"
+				href="/users/home"
 				class="tab tab-bordered h-full flex gap-x-1"
-				class:tab-active={$page.url.pathname == '/users/me'}
+				class:tab-active={$page.url.pathname == '/users/home'}
 			>
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
@@ -44,9 +44,9 @@
 				<span>Acceuil</span>
 			</a>
 			<a
-				href="/users/me/notifications"
+				href="/users/notifications"
 				class="tab tab-bordered h-full flex gap-x-1"
-				class:tab-active={$page.url.pathname == '/users/me/notifications'}
+				class:tab-active={$page.url.pathname == '/users/notifications'}
 			>
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
@@ -65,9 +65,9 @@
 				<span>Notifications</span>
 			</a>
 			<a
-				href="/users/me/settings"
+				href="/users/settings"
 				class="tab tab-bordered h-full flex gap-x-1"
-				class:tab-active={$page.url.pathname.startsWith('/users/me/settings')}
+				class:tab-active={$page.url.pathname.startsWith('/users/settings')}
 			>
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
@@ -109,7 +109,7 @@
 				tabindex="0"
 				class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
 			>
-				<form action="/users/me?/signout" method="POST">
+				<form action="/users/home?/signout" method="POST">
 					<input type="hidden" name="disconnect" value="" />
 					<li class="text-red-400"><button type="submit">Se déconnecter</button></li>
 				</form>
@@ -143,12 +143,12 @@
 				tabindex="0"
 				class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
 			>
-				<li><a href="/users/me">Acceuil</a></li>
-				<li><a href="/users/me/settings">Mon profile</a></li>
+				<li><a href="/users/home">Acceuil</a></li>
+				<li><a href="/users/settings">Mon profile</a></li>
 				<!-- svelte-ignore a11y-missing-attribute -->
-				<li><a href="/users/me/notifications">Notifications</a></li>
+				<li><a href="/users/notifications">Notifications</a></li>
 				<hr />
-				<form action="/users/me?/signout" method="POST">
+				<form action="/users/home?/signout" method="POST">
 					<input type="hidden" name="disconnect" value="" />
 					<li class="text-red-400"><button type="submit">Se déconnecter</button></li>
 				</form>

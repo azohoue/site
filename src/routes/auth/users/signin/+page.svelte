@@ -97,7 +97,7 @@
 								}
 							}
 						} else {
-							goto('/users/me');
+							goto('/users');
 						}
 					};
 				}}
@@ -186,11 +186,11 @@
 			class="mb-4 flex items-center gap-x-4 justify-center space-y-2 text-sm text-left text-gray-600 sm:text-center sm:space-y-0"
 		>
 			<!-- <a href="#" class="w-full btn btn-sm btn-link sm:w-auto">Forgot password</a> -->
-			<a href="/users/auth/signup" class="w-full sm:w-auto text-red-400 hover:text-purple-900"
+			<a href="/auth/users/signup" class="w-full sm:w-auto text-red-400 hover:text-purple-900"
 				>Créer un compte</a
 			>
 			<span class="hidden sm:flex">×</span>
-			<a href="/employers/auth/signin" class="text-gray-400 hover:text-purple-900 w-fit"
+			<a href="/auth/employers/signin" class="text-gray-400 hover:text-purple-900 w-fit"
 				>Je suis une entreprise</a
 			>
 		</p>

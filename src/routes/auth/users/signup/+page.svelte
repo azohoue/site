@@ -109,7 +109,7 @@
 
 							// IF END
 						} else {
-							goto('/users/auth/signin');
+							goto('/auth/users/signin');
 							toast.push('Inscription réussie !', {
 								theme: {
 									'--toastColor': 'mintcream',
@@ -195,7 +195,7 @@
 		</div>
 		<p class="my-0 text-xs font-medium text-center text-gray-700 sm:my-5 pb-10">
 			Vous avez déjà un compte ?
-			<a href="/users/auth/signin" class="text-red-400 hover:text-red-900">Connectez-vous</a>
+			<a href="/auth/users/signin" class="text-red-400 hover:text-red-900">Connectez-vous</a>
 		</p>
 	</div>
 </section>

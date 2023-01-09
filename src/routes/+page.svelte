@@ -39,8 +39,8 @@
 						>
 					</a>
 					<ul class="p-2 bg-[#fff] text-[#34495e] transition-all">
-						<li><a href="/users/auth/signup">Ouvrir mon compte</a></li>
-						<li><a href="/users/auth/signin">Me connecter</a></li>
+						<li><a href="/auth/users/signup">Ouvrir mon compte</a></li>
+						<li><a href="/auth/users/signin">Me connecter</a></li>
 					</ul>
 				</li>
 				<li tabindex="0">
@@ -56,15 +56,15 @@
 						>
 					</a>
 					<ul class="p-2 bg-[#fff] text-[#34495e] transition-all">
-						<li><a href="/employers/auth/signup">Ouvrir mon compte</a></li>
-						<li><a href="/employers/auth/signin">Me connecter</a></li>
+						<li><a href="/auth/employers/signup">Ouvrir mon compte</a></li>
+						<li><a href="/auth/employers/signin">Me connecter</a></li>
 					</ul>
 				</li>
 			</ul>
 		</div>
 		<div class="navbar-end flex gap-x-4">
 			<a
-				href="/users/auth/signin"
+				href="/auth/users/signin"
 				class="bg-red-400 px-4 py-2 rounded-md text-white font-semibold cursor-pointer">Connexion</a
 			>
 		</div>
@@ -110,7 +110,9 @@
 				</button>
 			</div>
 		</div> -->
-		<span class="text-xs">Powered by <a href="https://florentunix.ga"><i>@florentazd</i></a> </span>
+		<span class="text-xs"
+			>Powered by <a href="https://devagency.ga" class="underline"><i>DevAgency</i></a>
+		</span>
 	</div>
 	<div class="z-50 w-full h-fit mx-auto flex flex-col gap-y-4 pb-10 px-4 bg-[#F8F9FD]">
 		<h6 class="font-semibold sm:w-[70vw] mx-auto text-center pt-4 text-[#34495e]">

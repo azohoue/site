@@ -22,19 +22,19 @@
 		</div>
 		<div id="x" class="tabs h-full hidden sm:flex ">
 			<a
-				href="/employers/me"
+				href="/employers/home"
 				class="tab tab-bordered h-full "
-				class:tab-active={$page.url.pathname == '/employers/me'}>Acceuil</a
+				class:tab-active={$page.url.pathname == '/employers/home'}>Acceuil</a
 			>
 			<a
-				href="/employers/me/create-job"
+				href="/employers/create-job"
 				class="tab tab-bordered h-full"
-				class:tab-active={$page.url.pathname == '/employers/me/create-job'}>Créer une offre</a
+				class:tab-active={$page.url.pathname == '/employers/create-job'}>Créer une offre</a
 			>
 			<a
-				href="/employers/me/profile"
+				href="/employers/settings"
 				class="tab tab-bordered h-full"
-				class:tab-active={$page.url.pathname == '/employers/me/profile'}>Mon profile</a
+				class:tab-active={$page.url.pathname == '/employers/settings'}>Paramètres</a
 			>
 		</div>
 	</div>
@@ -55,7 +55,7 @@
 				tabindex="0"
 				class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
 			>
-				<form action="/employers/me?/signout" method="POST">
+				<form action="/employers/home?/signout" method="POST">
 					<input type="hidden" name="disconnect" value="" />
 					<li class="text-red-400"><button type="submit">Déconnexion</button></li>
 				</form>
@@ -89,10 +89,10 @@
 				tabindex="0"
 				class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
 			>
-				<li><a href="/employers/me">Acceuil</a></li>
-				<li><a href="/employers/me/create-job">Créer une offre</a></li>
+				<li><a href="/employers/home">Acceuil</a></li>
+				<li><a href="/employers/create-job">Créer une offre</a></li>
 				<!-- svelte-ignore a11y-missing-attribute -->
-				<li><a href="/employers/me/profile">Mon profile</a></li>
+				<li><a href="/employers/settings">Paramètres</a></li>
 			</ul>
 		</div>
 	</div>
