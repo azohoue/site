@@ -96,7 +96,7 @@
 					} else {
 						// Si il n'y a pas d'erreur,
 						// console.log("Utilisateur connectée ! ");
-						goto('/employers');
+						goto('/employers/home');
 					}
 				};
 			}}

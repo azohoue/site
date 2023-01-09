@@ -97,7 +97,7 @@
 								}
 							}
 						} else {
-							goto('/users');
+							goto('/users/home');
 						}
 					};
 				}}

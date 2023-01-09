@@ -1,16 +1,13 @@
-// Code inside hooks files run on the app start up, their can be use to set connexion wit database
 import PocketBase from "pocketbase"
 import { redirect, type Handle } from "@sveltejs/kit";
 import { PUBLIC_API_URL } from "$env/static/public";
 
 export const handle = (async ({ event, resolve }) => {
-    // Rediriger si chemin nom utilisatble
-    if (event.url.pathname == "/verification" || event.url.pathname == "/jobs" || event.url.pathname == "/users") {
+
+    if (event.url.pathname == "/verification" || event.url.pathname == "/employers" || event.url.pathname == "/jobs" || event.url.pathname == "/users") {
         throw redirect(307, "/")
     }
-    // A chaque requête, une variable pb est créée
     event.locals.pb = new PocketBase(PUBLIC_API_URL);
-    // On charge le cookie contenant les informations de l'utilisateur et son mot de passe depuis le navigateur
 
     event.locals.pb.authStore.loadFromCookie(event.request.headers.get('cookie') || '')
 
