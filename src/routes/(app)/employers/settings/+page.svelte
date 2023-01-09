@@ -7,6 +7,10 @@
 	const organization = data.organization;
 </script>
 
+<svelte:head>
+	<title>Paramètres du compte</title>
+</svelte:head>
+
 <div id="profile" class="py-10 px-4 sm:px-0 flex flex-col items-center gap-y-4 h-fit overflow-auto">
 	<div id="user-profile" class="min-h-[360px] w-full sm:w-[60vw] flex flex-col gap-5">
 		<div id="user-profile-header">
@@ -62,6 +66,7 @@
 							type="text"
 							placeholder="Ex: paul.djossou@azohoue.com"
 							class="input input-bordered w-full"
+							disabled
 						/>
 						<label class="label">
 							<!-- <span class="label-text-alt">Alt label</span> -->
@@ -69,10 +74,9 @@
 					</div>
 				</div>
 			</div>
-			<div id="form-submit" class="flex justify-end px-4 items-center gap-x-4 border-t-[1px]">
+			<div id="form-submit" class="flex justify-start px-4 items-center gap-x-4 border-t-[1px]">
 				<!--  -->
-				<button class="text-red-500" type="reset">Annuler</button>
-				<button class=" btn normal-case">Modifier</button>
+				<button class="normal-case bg-gray-700 text-white p-2 rounded-md">Sauvegarder</button>
 			</div>
 		</form>
 	</div>
@@ -173,10 +177,9 @@
 				</div>
 			</div>
 			<!--  -->
-			<div id="form-submit" class="flex justify-end px-4 items-center gap-x-4 border-t-[1px]">
+			<div id="form-submit" class="flex justify-start px-4 items-center gap-x-4 border-t-[1px]">
 				<!--  -->
-				<button class="text-red-500">Annuler</button>
-				<button class=" btn bg-gray-700 hover:bg-gray-700 normal-case">Modifier</button>
+				<button class="bg-gray-700 text-white p-2 rounded-md normal-case">Modifier</button>
 			</div>
 		</form>
 	</div>

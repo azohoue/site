@@ -9,23 +9,18 @@ export const load = (async ({ locals }) => {
     const organization = await locals.pb.collection("organizations").getFirstListItem(`holder='${employer.id}'`)
 
     // Load employer job propositions from here
-    let jobs = await locals.pb.collection("jobs").getList(1, 10, {
-        filter: `organization='${organization.id}'`
-    })
+    // let jobs = await locals.pb.collection("jobs").getList(1, 10, {
+    //     filter: `organization='${organization.id}'`
+    // })
 
-    jobs = jobs.items.map((item: any) => {
-        return JSON.parse(JSON.stringify(item))
-    })
+    // jobs = jobs.items.map((item: any) => {
+    //     return JSON.parse(JSON.stringify(item))
+    // })
     // return all content
 
     // console.log(jobs);
 
     return {
-        jobs: {
-            startAt: 1,
-            endAt: 10,
-            jobs: jobs
-        },
         organization: JSON.parse(JSON.stringify(organization)),
         employer: employer
     };

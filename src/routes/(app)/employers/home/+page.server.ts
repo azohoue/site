@@ -1,9 +1,22 @@
 import type { PageServerLoad } from './$types';
 import { redirect, type Actions } from '@sveltejs/kit';
 
-export const load = (async () => {
-    return {};
-}) satisfies PageServerLoad;
+export const load = (
+    async ({ locals, parent }) => {
+        const parentData = await parent()
+        // Load employer job propositions from here
+        let jobs = await locals.pb.collection("jobs").getList(1, 10, {
+            filter: `organization='${parentData.organization.id}'`
+        })
+        jobs = jobs.items.map((item: any) => {
+            return JSON.parse(JSON.stringify(item))
+        })
+
+        return {
+            jobs
+        };
+    }
+) satisfies PageServerLoad;
 
 
 export const actions = ({

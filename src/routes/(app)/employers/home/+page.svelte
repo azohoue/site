@@ -1,8 +1,18 @@
 <script lang="ts">
+	import { fly } from 'svelte/transition';
+	import { onMount } from 'svelte';
 	import type { PageData } from './$types';
 	export let data: PageData;
-	const jobs = data.jobs.jobs;
+	onMount(() => {
+		console.log(data.jobs);
+	});
+
+	$: jobs = data.jobs;
 </script>
+
+<svelte:head>
+	<title>Acceuil | Employeur</title>
+</svelte:head>
 
 <section
 	id="acceuil"
@@ -39,6 +49,9 @@
 		<div id="offers-list" class="flex flex-col gap-y-5">
 			{#each jobs as job}
 				<div
+					in:fly={{
+						x: -200
+					}}
 					class="offer h-32 w-full bg-white shadow-sm rounded-md border-[1px] border-[#A4A4A480] grid grid-rows-[48px,1fr] p-2"
 				>
 					<div class="flex justify-between items-center">
@@ -148,13 +161,6 @@
 			{:else}
 				<p class="w-full italic font-semibold">Aucune publication pour le moment</p>
 			{/each}
-		</div>
-
-		<div class="btn-group border-none">
-			<button class="btn btn-sm bg-[#1F2937] border-none">1</button>
-			<button class="btn btn-sm bg-white text-black border-none">2</button>
-			<!-- <button class="btn btn-sm bg-white text-black border-none">3</button> -->
-			<!-- <button class="btn btn-sm bg-white text-black border-none">4</button> -->
 		</div>
 	</div>
 </section>
