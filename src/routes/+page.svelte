@@ -5,10 +5,13 @@
 	const jobs = data.jobs;
 </script>
 
+<svelte:head>
+	<title>Azohoue | Un emploi pour tous</title>
+</svelte:head>
 <div class="h-fit w-full flex flex-col">
 	<div class="navbar h-16 px-4 sm:px-16 z-50 bg-transparent text-white">
 		<div class="navbar-start">
-			<div class="flex justify-center items-center gap-1 text-red-400">
+			<div class="flex justify-center items-center gap-1 text-[#34495e]">
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
 					viewBox="0 0 24 24"
@@ -24,10 +27,16 @@
 				<a href="/" class="normal-case text-xl font-semibold text-[20px] h-fit">azohoue</a>
 			</div>
 		</div>
-		<div class="navbar-center hidden lg:flex justify-start">
-			<ul class="menu menu-horizontal px-1 text-[#34495e]">
-				<li tabindex="0">
-					<a>
+		<div class="navbar-center hidden lg:flex items-center">
+			<ul class="menu menu-horizontal px-1 text-[#34495e] text-sm">
+				<li class="px-0 py-3">
+					<a href="">Tous les offres</a>
+				</li>
+				<li class="px-0 py-3">
+					<a href="">Liste des entreprises</a>
+				</li>
+				<li class="px-0 py-3" tabindex="0">
+					<span>
 						Compte Utilisateur
 						<svg
 							class="fill-current"
@@ -37,14 +46,14 @@
 							viewBox="0 0 24 24"
 							><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" /></svg
 						>
-					</a>
+					</span>
 					<ul class="p-2 bg-[#fff] text-[#34495e] transition-all">
 						<li><a href="/auth/users/signup">Ouvrir mon compte</a></li>
 						<li><a href="/auth/users/signin">Me connecter</a></li>
 					</ul>
 				</li>
-				<li tabindex="0">
-					<a>
+				<li class="px-0 py-3 text-red-400" tabindex="0">
+					<span>
 						Compte Entreprise
 						<svg
 							class="fill-current"
@@ -54,7 +63,7 @@
 							viewBox="0 0 24 24"
 							><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" /></svg
 						>
-					</a>
+					</span>
 					<ul class="p-2 bg-[#fff] text-[#34495e] transition-all">
 						<li><a href="/auth/employers/signup">Ouvrir mon compte</a></li>
 						<li><a href="/auth/employers/signin">Me connecter</a></li>
@@ -65,20 +74,23 @@
 		<div class="navbar-end flex gap-x-4">
 			<a
 				href="/auth/users/signin"
-				class="bg-red-400 px-4 py-2 rounded-md text-white font-semibold cursor-pointer">Connexion</a
+				class="bg-[#34495e] px-4 py-2 rounded-md text-white font-semibold cursor-pointer"
+				>Connexion</a
 			>
 		</div>
 	</div>
 	<!-- Hero -->
 	<div
 		id="hero"
-		class=" relative z-0 px-4 gap-x-2 sm:px-0 w-full mx-auto xl:w-[80vw] h-[396px] sm:h-[460px] flex flex-col text-center justify-around sm:justify-around content-around"
+		class="select-none relative z-0 px-4 gap-x-2 sm:px-0 w-full mx-auto xl:w-[80vw] h-[396px] sm:h-[460px] flex flex-col text-center justify-around sm:justify-around content-around"
 	>
-		<img
-			src="/images/banner.gif"
-			class="-z-50 h-full blur-sm md:blur-lg object-fill w-full absolute top-0 left-0"
-			alt=""
-		/>
+		<div class="-z-50 absolute h-full w-full flex items-center justify-center">
+			<img
+				src="/images/banner.gif"
+				class="absolute  h-[500px] w-full sm:w-[500px] select-none blur-sm md:blur-lg object-fill"
+				alt=""
+			/>
+		</div>
 		<h3 class="font-semibold text-2xl sm:text-5xl text-[#34495e]">
 			Trouver votre emploi plus facilement sur <span class="underline text-red-400">azohoue</span>
 		</h3>
@@ -110,14 +122,14 @@
 				</button>
 			</div>
 		</div> -->
-		<span class="text-xs"
+		<span class="text-xs select-text"
 			>Powered by <a href="https://devagency.ga" class="underline"><i>DevAgency</i></a>
 		</span>
 	</div>
 	<div class="z-50 w-full h-fit mx-auto flex flex-col gap-y-4 pb-10 px-4 bg-[#F8F9FD]">
-		<h6 class="font-semibold sm:w-[70vw] mx-auto text-center pt-4 text-[#34495e]">
+		<h5 class="font-semibold sm:w-[70vw] mx-auto text-center pt-4 text-[#34495e]">
 			Dernières offres
-		</h6>
+		</h5>
 		<div id="offers" class="flex flex-col gap-y-10 w-full sm:w-[70vw] mx-auto min-h-[280px]">
 			{#each jobs.items as job}
 				<div
@@ -134,7 +146,6 @@
 						/>
 					</div>
 					<div class="w-full h-full flex flex-col justify-center py-2">
-						<h3 class="text-[#34495e] font-semibold text-base sm:text-lg">{job.name}</h3>
 						<div class="flex gap-1 items-center">
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
@@ -151,7 +162,10 @@
 								/>
 							</svg>
 
-							<h4 class="capitalize gap-x-1 flex items-center text-sm">
+							<a
+								href={'/companies/' + job.expand.organization.id}
+								class="capitalize gap-x-1 flex items-center text-sm font-semibold text-[#A4A4A4]"
+							>
 								{job.expand.organization.name}
 								{#if job.expand.organization.badge}
 									<svg
@@ -167,8 +181,9 @@
 										/>
 									</svg>
 								{/if}
-							</h4>
+							</a>
 						</div>
+						<h3 class="text-[#34495e] font-semibold text-base sm:text-lg">{job.name}</h3>
 						<div class="flex gap-x-4">
 							<div class="flex gap-1 items-center">
 								<svg
@@ -287,5 +302,10 @@
 <style>
 	.important {
 		border-color: rgb(248, 113, 113);
+	}
+	li:active,
+	a:active,
+	span:active {
+		background-color: initial !important;
 	}
 </style>

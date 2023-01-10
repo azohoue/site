@@ -202,7 +202,20 @@
 				/>
 				<span bind:this={error_input.password} class="text-xs text-red-500" />
 			</label>
-			<input type="submit" class="btn normal-case" value="Ouvrir mon compte" />
+			<label class="flex items-center">
+				<input name="cdn" type="checkbox" class="checkbox" required />
+				<span class="block ml-2 text-xs font-medium text-gray-700 cursor-pointer"
+					>J'accepte les <a href="/cgu" class="text-red-500 underline">conditions d'utilisations</a>
+					et la
+					<a href="/policy" class="text-red-400 underline">politique de confidentialité.</a></span
+				>
+				<span class="text-xs text-red-500" />
+			</label>
+			<input
+				type="submit"
+				class="bg-red-400 text-white text-center px-4 py-2 rounded-md w-full sm:w-fit font-semibold cursor-pointer"
+				value="Ouvrir mon compte"
+			/>
 		</form>
 		<div class="pt-6 text-sm font-medium text-gray-700 border-t border-gray-200">
 			Vous avez déjà un compte ?

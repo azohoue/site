@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { PUBLIC_API_URL } from '$env/static/public';
-	import type { PageData } from './$types';
+	import type { PageData } from '../../../jobs/[id]/$types';
 	export let data: PageData;
 
 	const job = data.job;
@@ -169,33 +169,7 @@
 					</div>
 				</div>
 				<div id="description" class="px-0">
-					<!-- TODO: REMOVE CONTENT LATER -->
-					<!-- <h2>About Stimulus</h2>
-					<p>
-						<a href="https://github.com/florentazd">Desipro</a> is a social platform started by Sticker
-						Mule to show what's possible if your mission is to increase human happiness.
-					</p>
-					<h2>We offer</h2>
-					<ul>
-						<li>Remote work with flexible schedules</li>
-						<li>A privately owned, low-stress culture.</li>
-						<li>A fun "no bullshit" work environment</li>
-					</ul>
-					<h2>We like you to know</h2>
-					<ul>
-						<li>Docker</li>
-						<li>NextJS</li>
-						<li>TypeScript</li>
-					</ul>
-					<h2>Compensation and benefits</h2>
-					<ul>
-						<li>Salary: $120k+ based on experience</li>
-						<li>$20,000 signing bonus</li>
-						<li>4 weeks vacation + holidays based on your country of residence</li>
-					</ul>
-					<p>Contact us here <a href="mailto:desipro@desipro.com">desipro@desipro.com</a></p> -->
 					{@html job.description}
-					<!--  -->
 				</div>
 				<div class="flex justify-between items-end text-[#EE786B]">
 					<a

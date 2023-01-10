@@ -131,6 +131,7 @@
 							class="input input-bordered w-full"
 							type="text"
 							placeholder="Ex: Djossou"
+							required
 						/>
 						<span bind:this={error_input.lastname} class="text-xs text-red-500" />
 					</label>
@@ -144,6 +145,7 @@
 							class="input input-bordered w-full"
 							type="text"
 							placeholder="Ex: Jean"
+							required
 						/>
 						<span bind:this={error_input.firstname} class="text-xs text-red-500" />
 					</label>
@@ -159,6 +161,7 @@
 						type="email"
 						placeholder="Ex: jean.djossou@azohoue.com"
 						inputmode="email"
+						required
 					/>
 					<span class="text-xs text-red-500" bind:this={error_input.email} />
 				</label>
@@ -171,17 +174,20 @@
 						class="input input-bordered w-full"
 						type="password"
 						placeholder="••••••••"
+						required
 					/>
 					<span class="text-xs text-red-500" bind:this={error_input.password} />
 				</label>
 				<div class="flex flex-col items-start justify-between sm:items-center sm:flex-row">
 					<label class="flex items-center">
-						<input name="cdn" type="checkbox" class="checkbox" />
+						<input name="cdn" type="checkbox" class="checkbox" required />
 						<span class="block ml-2 text-xs font-medium text-gray-700 cursor-pointer"
-							>J'accepte les <a href="#" class="text-red-500 underline">conditions d'utilisations</a
+							>J'accepte les <a href="/cgu" class="text-red-500 underline"
+								>conditions d'utilisations</a
 							>
 							et la
-							<a href="#" class="text-red-400 underline">politique de confidentialité.</a></span
+							<a href="/policy" class="text-red-400 underline">politique de confidentialité.</a
+							></span
 						>
 						<span class="text-xs text-red-500" />
 					</label>

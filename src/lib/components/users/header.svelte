@@ -4,7 +4,7 @@
 	import { PUBLIC_API_URL } from '$env/static/public';
 </script>
 
-<div class="navbar bg-base-100 lg:px-32 fixed h-16 py-0 z-20 w-screen">
+<div class="navbar bg-base-100 lg:px-10 fixed h-16 py-0 z-20 w-screen">
 	<div class="flex-1 h-full text-red-400">
 		<div class="px-4 flex justify-center items-center gap-1">
 			<svg

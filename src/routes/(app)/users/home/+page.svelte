@@ -429,7 +429,7 @@
 							</div>
 						</div>
 						<div class="flex justify-between items-end text-[#EE786B]">
-							<a href="/users/me/jobs/{job.id}" class="cursor-pointer">Voir plus de détails > </a>
+							<a href="/users/jobs/{job.id}" class="cursor-pointer">Voir plus de détails > </a>
 							<!-- svelte-ignore a11y-click-events-have-key-events -->
 							<!-- <label
 								on:click={() => {

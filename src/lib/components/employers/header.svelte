@@ -1,9 +1,10 @@
 <script lang="ts">
 	import { page } from '$app/stores';
+	import { PUBLIC_API_URL } from '$env/static/public';
 	export let name: any, email: any, id: any, picUrl: any;
 </script>
 
-<div class="navbar bg-base-100 lg:px-32 fixed h-16 py-0 z-20 w-screen">
+<div class="navbar bg-base-100 lg:px-10 fixed h-16 py-0 z-20 w-screen">
 	<div class="flex-1 h-full">
 		<div class="px-4 flex justify-center items-center gap-1 text-red-400">
 			<svg
@@ -43,10 +44,10 @@
 			<label tabindex="0" class="btn btn-ghost btn-circle avatar ">
 				<div class="w-10 rounded-full ring ring-red-400">
 					<img
-						class="object-cover "
+						class="object-cover"
 						src={picUrl
-							? `http://127.0.0.1:8090/api/files/organizations/${id}/${picUrl}`
-							: '/images/azohoue.png'}
+							? `${PUBLIC_API_URL}/api/files/organizations/${id}/${picUrl}`
+							: '/images/empty.jpg'}
 						alt="profile"
 					/>
 				</div>
