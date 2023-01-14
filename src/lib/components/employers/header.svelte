@@ -6,7 +6,7 @@
 
 <div class="navbar bg-base-100 lg:px-10 fixed h-16 py-0 z-20 w-screen">
 	<div class="flex-1 h-full">
-		<div class="px-4 flex justify-center items-center gap-1 text-red-400">
+		<div class="px-4 flex justify-center items-center gap-1 text-[#3498db]">
 			<svg
 				xmlns="http://www.w3.org/2000/svg"
 				viewBox="0 0 24 24"
@@ -41,10 +41,10 @@
 	</div>
 	<div class="flex-none">
 		<div class="dropdown dropdown-end dropdown-bottom">
-			<label tabindex="0" class="btn btn-ghost btn-circle avatar ">
-				<div class="w-10 rounded-full ring ring-red-400">
+			<label tabindex="0" class="h-10 w-10">
+				<div class="w-10 rounded-full">
 					<img
-						class="object-cover"
+						class="object-cover rounded-full h-10 w-10 cursor-pointer"
 						src={picUrl
 							? `${PUBLIC_API_URL}/api/files/organizations/${id}/${picUrl}`
 							: '/images/empty.jpg'}
@@ -58,14 +58,14 @@
 			>
 				<form action="/employers/home?/signout" method="POST">
 					<input type="hidden" name="disconnect" value="" />
-					<li class="text-red-400"><button type="submit">Déconnexion</button></li>
+					<li class="text-[#3498db]"><button type="submit">Déconnexion</button></li>
 				</form>
 			</ul>
 		</div>
-		<div class="hidden sm:flex flex-col text-red-400">
+		<!-- <div class="hidden sm:flex flex-col text-[#3498db]">
 			<h4 class="font-semibold">{name}</h4>
 			<span class="text-gray-400 text-sm font-semibold">{email}</span>
-		</div>
+		</div> -->
 		<div class="dropdown dropdown-end block sm:hidden">
 			<label for="" tabindex="0">
 				<div class="w-10 rounded-full flex justify-center items-center">
@@ -101,7 +101,7 @@
 
 <style>
 	.tab-active {
-		color: #f87171;
-		border-bottom: 2px solid #f87171;
+		color: #3498db;
+		border-bottom: 2px solid #3498db;
 	}
 </style>

@@ -72,9 +72,31 @@
 			</ul>
 		</div>
 		<div class="navbar-end flex gap-x-4">
+			<div class="hidden sm:flex gap-8 md:place-self-center md:justify-self-end text-[#34495e]">
+				<a href="https://twitter.com/azohoue_site"
+					><svg
+						xmlns="http://www.w3.org/2000/svg"
+						width="24"
+						height="24"
+						viewBox="0 0 24 24"
+						class="fill-current"
+						><path
+							d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"
+						/></svg
+					>
+				</a>
+				<a href="https://github.com/azohoue"
+					><svg style="width:24px;height:24px" viewBox="0 0 24 24">
+						<path
+							fill="currentColor"
+							d="M12,2A10,10 0 0,0 2,12C2,16.42 4.87,20.17 8.84,21.5C9.34,21.58 9.5,21.27 9.5,21C9.5,20.77 9.5,20.14 9.5,19.31C6.73,19.91 6.14,17.97 6.14,17.97C5.68,16.81 5.03,16.5 5.03,16.5C4.12,15.88 5.1,15.9 5.1,15.9C6.1,15.97 6.63,16.93 6.63,16.93C7.5,18.45 8.97,18 9.54,17.76C9.63,17.11 9.89,16.67 10.17,16.42C7.95,16.17 5.62,15.31 5.62,11.5C5.62,10.39 6,9.5 6.65,8.79C6.55,8.54 6.2,7.5 6.75,6.15C6.75,6.15 7.59,5.88 9.5,7.17C10.29,6.95 11.15,6.84 12,6.84C12.85,6.84 13.71,6.95 14.5,7.17C16.41,5.88 17.25,6.15 17.25,6.15C17.8,7.5 17.45,8.54 17.35,8.79C18,9.5 18.38,10.39 18.38,11.5C18.38,15.32 16.04,16.16 13.81,16.41C14.17,16.72 14.5,17.33 14.5,18.26C14.5,19.6 14.5,20.68 14.5,21C14.5,21.27 14.66,21.59 15.17,21.5C19.14,20.16 22,16.42 22,12A10,10 0 0,0 12,2Z"
+						/>
+					</svg></a
+				>
+			</div>
 			<a
 				href="/auth/users/signin"
-				class="bg-[#34495e] px-4 py-2 rounded-md text-white font-semibold cursor-pointer"
+				class="flex sm:hidden bg-[#34495e] px-4 py-2 rounded-md text-white font-semibold cursor-pointer"
 				>Connexion</a
 			>
 		</div>
@@ -82,7 +104,7 @@
 	<!-- Hero -->
 	<div
 		id="hero"
-		class="select-none relative z-0 px-4 gap-x-2 sm:px-0 w-full mx-auto xl:w-[80vw] h-[396px] sm:h-[460px] flex flex-col text-center justify-around sm:justify-around content-around"
+		class="bg-white select-none relative z-0 px-4 gap-x-2 sm:px-0 w-full mx-auto xl:w-[80vw] h-[396px] sm:h-[460px] flex flex-col text-center justify-around sm:justify-around content-around"
 	>
 		<div class="-z-50 absolute h-full w-full flex items-center justify-center">
 			<img
@@ -91,7 +113,7 @@
 				alt=""
 			/>
 		</div>
-		<h3 class="font-semibold text-2xl sm:text-5xl text-[#34495e]">
+		<h3 id="banner-text" class="font-semibold text-2xl sm:text-5xl text-[#34495e]">
 			Trouver votre emploi plus facilement sur <span class="underline text-red-400">azohoue</span>
 		</h3>
 		<h4 class="font-normal text-base">
@@ -130,15 +152,15 @@
 		<h5 class="font-semibold sm:w-[70vw] mx-auto text-center pt-4 text-[#34495e]">
 			Dernières offres
 		</h5>
-		<div id="offers" class="flex flex-col gap-y-10 w-full sm:w-[70vw] mx-auto min-h-[280px]">
+		<div id="offers" class="flex flex-col gap-y-4 w-full sm:w-[70vw] mx-auto min-h-[280px]">
 			{#each jobs.items as job}
-				<div
-					class:important={job.expand.organization.badge}
-					class="h-28 w-full border-[1px] rounded-md bg-white grid grid-cols-[60px,1fr,80px] sm:grid-cols-[80px,1fr,80px] px-4 sm:px-4 gap-x-2"
+				<a
+					href={'/jobs/' + job.id}
+					class="h-28 w-full border-[1px] rounded-md bg-white grid grid-cols-[60px,1fr] sm:grid-cols-[80px,1fr] px-4 sm:px-4 gap-x-2"
 				>
 					<div class="h-full w-full flex justify-center items-center">
 						<img
-							class="w-full h-[60px] sm:h-20 rounded-md object-cover ring-[1px] ring-[#e5e7eb]"
+							class="w-[60px] h-[60px] sm:h-[60px] rounded-md object-cover"
 							src={job.expand.organization.logo
 								? `${PUBLIC_API_URL}/api/files/organizations/${job.expand.organization.id}/${job.expand.organization.logo}`
 								: '/images/empty.jpg'}
@@ -146,45 +168,28 @@
 						/>
 					</div>
 					<div class="w-full h-full flex flex-col justify-center py-2">
-						<div class="flex gap-1 items-center">
-							<svg
-								xmlns="http://www.w3.org/2000/svg"
-								fill="none"
-								viewBox="0 0 24 24"
-								stroke-width="1.5"
-								stroke="currentColor"
-								class="w-4 h-4"
-							>
-								<path
-									stroke-linecap="round"
-									stroke-linejoin="round"
-									d="M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M6.75 21v-3.375c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21M3 3h12m-.75 4.5H21m-3.75 3.75h.008v.008h-.008v-.008zm0 3h.008v.008h-.008v-.008zm0 3h.008v.008h-.008v-.008z"
-								/>
-							</svg>
-
-							<a
-								href={'/companies/' + job.expand.organization.id}
+						<h3 class="text-[#202020] font-bold text-base sm:text-lg">{job.name}</h3>
+						<p class="flex mb-1">
+							<span
 								class="capitalize gap-x-1 flex items-center text-sm font-semibold text-[#A4A4A4]"
+								>{job.expand.organization.name}</span
 							>
-								{job.expand.organization.name}
-								{#if job.expand.organization.badge}
-									<svg
-										xmlns="http://www.w3.org/2000/svg"
-										viewBox="0 0 24 24"
-										fill="#DC2626"
-										class="w-5 h-5"
-									>
-										<path
-											fill-rule="evenodd"
-											d="M8.603 3.799A4.49 4.49 0 0112 2.25c1.357 0 2.573.6 3.397 1.549a4.49 4.49 0 013.498 1.307 4.491 4.491 0 011.307 3.497A4.49 4.49 0 0121.75 12a4.49 4.49 0 01-1.549 3.397 4.491 4.491 0 01-1.307 3.497 4.491 4.491 0 01-3.497 1.307A4.49 4.49 0 0112 21.75a4.49 4.49 0 01-3.397-1.549 4.49 4.49 0 01-3.498-1.306 4.491 4.491 0 01-1.307-3.498A4.49 4.49 0 012.25 12c0-1.357.6-2.573 1.549-3.397a4.49 4.49 0 011.307-3.497 4.49 4.49 0 013.497-1.307zm7.007 6.387a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z"
-											clip-rule="evenodd"
-										/>
-									</svg>
-								{/if}
-							</a>
-						</div>
-						<h3 class="text-[#34495e] font-semibold text-base sm:text-lg">{job.name}</h3>
-						<div class="flex gap-x-4">
+							{#if job.expand.organization.badge}
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									viewBox="0 0 24 24"
+									fill="#DC2626"
+									class="w-5 h-5"
+								>
+									<path
+										fill-rule="evenodd"
+										d="M8.603 3.799A4.49 4.49 0 0112 2.25c1.357 0 2.573.6 3.397 1.549a4.49 4.49 0 013.498 1.307 4.491 4.491 0 011.307 3.497A4.49 4.49 0 0121.75 12a4.49 4.49 0 01-1.549 3.397 4.491 4.491 0 01-1.307 3.497 4.491 4.491 0 01-3.497 1.307A4.49 4.49 0 0112 21.75a4.49 4.49 0 01-3.397-1.549 4.49 4.49 0 01-3.498-1.306 4.491 4.491 0 01-1.307-3.498A4.49 4.49 0 012.25 12c0-1.357.6-2.573 1.549-3.397a4.49 4.49 0 011.307-3.497 4.49 4.49 0 013.497-1.307zm7.007 6.387a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z"
+										clip-rule="evenodd"
+									/>
+								</svg>
+							{/if}
+						</p>
+						<div class="flex gap-x-4 text-sm">
 							<div class="flex gap-1 items-center">
 								<svg
 									xmlns="http://www.w3.org/2000/svg"
@@ -192,7 +197,7 @@
 									viewBox="0 0 24 24"
 									stroke-width="1.5"
 									stroke="currentColor"
-									class="w-4 h-4"
+									class="hidden w-4 h-4"
 								>
 									<path
 										stroke-linecap="round"
@@ -245,20 +250,14 @@
 							</div>
 						</div>
 					</div>
-					<div class="h-full w-full flex items-center justify-center">
-						<a
-							class="text-sm px-0 flex justify-center items-center py-2 w-full border-red-400 border-[1px] text-red-400 font-semibold rounded-md"
-							href={'/jobs/' + job.id}>Voir l'offre</a
-						>
-					</div>
-				</div>
+				</a>
 			{:else}
 				<i>Aucune offre disponible pour le moment.</i>
 			{/each}
 		</div>
 	</div>
 	<!-- footer -->
-	<footer class="footer items-center sm:px-8 p-4 bg-neutral text-neutral-content">
+	<footer class="footer bg-gray-600 text-white items-center sm:px-8 p-4">
 		<div class="items-center grid-flow-col">
 			<svg
 				xmlns="http://www.w3.org/2000/svg"
@@ -308,4 +307,7 @@
 	span:active {
 		background-color: initial !important;
 	}
+	/* #banner-text {
+		font-family: 'Spline Sans' !important;
+	} */
 </style>

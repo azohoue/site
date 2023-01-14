@@ -12,10 +12,10 @@
 
 <section
 	id="acceuil"
-	class="h-full w-full flex flex-col items-center py-10 px-4 sm:px-0 overflow-x-hidden overflow-y-auto"
+	class="h-full w-full flex flex-col items-center px-4 sm:px-0 overflow-x-hidden overflow-y-auto"
 >
-	<div class="w-full sm:w-[60vw] flex flex-col gap-y-5">
-		<div class="h-10 border-b-2 flex justify-between items-center">
+	<div class="w-full sm:w-[60vw] flex flex-col">
+		<div class="h-fit flex justify-between items-center py-10 ">
 			<h2 class="sm:text-xl font-semibold">Vos offres d'emploi</h2>
 			<button
 				class="flex items-center gap-x-1 text-sm dropdown dropdown-bottom cursor-pointer indicator"
@@ -48,9 +48,9 @@
 					in:fly={{
 						x: -200
 					}}
-					class="offer h-32 w-full bg-white shadow-sm rounded-md border-[1px] border-[#A4A4A480] grid grid-rows-[48px,1fr] p-2"
+					class="offer h-32 w-full bg-white shadow-sm rounded-md border-[1px] border-[#A4A4A480] grid grid-rows-[48px,1fr] p-4"
 				>
-					<div class="flex justify-between items-center">
+					<div class="flex justify-between items-center h-fit">
 						<h3 class="font-semibold text-[20px]">{job.name}</h3>
 						<div class="flex gap-x-2 font-semibold text-[#A4A4A4]">
 							<div title="Nombre de vus" class="flex gap-x-1 text-sm items-center cursor-help">

@@ -13,25 +13,11 @@
 	class="bg-[#f8f9fd] h-fit min-h-screen w-full flex justify-center px-4 xl:px-0 pt-10"
 >
 	<div class="w-full flex flex-col md:w-full mb-40 sm:mb-0 xl:w-[90vw] min-h-28 h-fit gap-y-4">
-		<a href="/" class="text-red-400 flex gap-x-1">
-			<svg
-				xmlns="http://www.w3.org/2000/svg"
-				fill="none"
-				viewBox="0 0 24 24"
-				stroke-width="1.5"
-				stroke="currentColor"
-				class="w-6 h-6"
-			>
-				<path
-					stroke-linecap="round"
-					stroke-linejoin="round"
-					d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18"
-				/>
-			</svg>
-
-			<span class="font-semibold">Retour</span>
-		</a>
-		<div id="logo" class="h-fit w-full flex justify-start flex-col gap-y-2">
+		<a
+			href={'/companies/' + job.expand.organization.id}
+			id="logo"
+			class="h-fit w-full flex justify-start flex-col gap-y-4"
+		>
 			<img
 				src={logo ? `${PUBLIC_API_URL}/api/files/organizations/${id}/${logo}` : '/images/empty.jpg'}
 				class="h-[120px] w-[120px] rounded-md object-cover ring ring-red-400 ring-offset-2"
@@ -76,14 +62,14 @@
 				</svg>
 				<span>{job.views > 1 ? job.views + ' vus' : job.views + ' vu'}</span>
 			</div>
-		</div>
+		</a>
 		<div id="job-details" class="grid grid-cols-1 sm:grid-cols-[2fr,0.8fr]">
 			<div class="flex flex-col w-full py-5 md:pr-4 gap-y-5 ">
 				<div class="flex flex-col gap-y-1 min-w-full">
 					<h3 class="text-[32px] font-semibold">
 						{job.name}
 					</h3>
-					<div class="flex gap-x-10 overflow-x-auto min-w-fit items-center">
+					<div class="flex flex-wrap gap-x-10 gap-y-5 overflow-x-auto min-w-fit items-center">
 						<!--  -->
 						<div class="flex gap-1 items-center">
 							<svg
@@ -145,7 +131,10 @@
 						</div>
 						<!--  -->
 						{#if job.expand.organization.website}
-							<div class="flex gap-1 items-center">
+							<a
+								href={'https://' + job.expand.organization.website}
+								class="flex gap-1 items-center text-blue-400 underline"
+							>
 								<svg
 									xmlns="http://www.w3.org/2000/svg"
 									fill="none"
@@ -160,11 +149,8 @@
 										d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418"
 									/>
 								</svg>
-								<a
-									href={'https://' + job.expand.organization.website}
-									class="text-blue-400 underline">Site Web</a
-								>
-							</div>
+								<span>Site Web</span>
+							</a>
 						{/if}
 					</div>
 				</div>

@@ -21,13 +21,15 @@
 </script>
 
 <section class="h-full w-full grid grid-cols-1 sm:grid-cols-2">
-	<div class="bg-white flex flex-col justify-center gap-y-4 w-full px-4 xl:px-8 py-20">
+	<div
+		class="bg-white flex flex-col justify-center gap-y-4 w-full px-4 xl:px-8 py-20 max-w-[500px] mx-auto"
+	>
 		<div class="flex justify-start items-center gap-1">
 			<svg
 				xmlns="http://www.w3.org/2000/svg"
 				viewBox="0 0 24 24"
 				fill="currentColor"
-				class="w-6 h-6 text-red-400"
+				class="w-6 h-6 text-[#3498db]"
 			>
 				<path
 					fill-rule="evenodd"
@@ -35,19 +37,19 @@
 					clip-rule="evenodd"
 				/>
 			</svg>
-			<a href="/" class="normal-case text-xl font-semibold text-[20px] h-fit text-red-400"
+			<a href="/" class="normal-case text-xl font-semibold text-[20px] h-fit text-[#3498db]"
 				>azohoue</a
 			>
 		</div>
 		<h1
 			class="mb-4 -mt-3 text-2xl font-extrabold leading-snug tracking-tight text-left text-gray-900 md:text-4xl"
 		>
-			Mon compte <span class="underline text-red-400">entreprise</span>
+			Mon compte <span class="underline text-[#3498db]">entreprise</span>
 		</h1>
 
 		<form
 			method="POST"
-			class="space-y-5"
+			class="flex flex-col gap-y-5"
 			use:enhance={({ form, cancel }) => {
 				sbt.classList.add('loading');
 				return async ({ result, update }) => {
@@ -106,13 +108,13 @@
 				<input
 					bind:this={user_input.email}
 					bind:value={input_value.email}
-					class="input input-bordered w-full"
+					class="input input-bordered w-full rounded"
 					type="email"
 					placeholder="Ex: jean.djossou@azohoue.com"
 					name="email"
 					required
 				/>
-				<span bind:this={error_input.email} class="text-xs text-red-500" />
+				<span bind:this={error_input.email} class="text-xs text-[#3498db]" />
 			</label>
 			<label class="block">
 				<span class="block mb-1 text-sm font-medium text-gray-700">Votre mot de passe</span>
@@ -120,19 +122,23 @@
 					bind:this={user_input.password}
 					bind:value={input_value.password}
 					required
-					class="input input-bordered w-full"
+					class="input input-bordered w-full rounded"
 					type="password"
 					placeholder="••••••••"
 					name="password"
 				/>
-				<span bind:this={error_input.password} class="text-xs text-red-500" />
+				<span bind:this={error_input.password} class="text-xs text-[#3498db]" />
 			</label>
-			<input
+			<div id="connected" class="flex gap-1 items-center">
+				<input type="checkbox" name="" id="" class="color-[#3498db] h-3 w-3" />
+				<span class="text-sm">Rester connecté</span>
+			</div>
+			<button
 				bind:this={sbt}
 				type="submit"
-				class="btn btn-error text-white normal-case cursor-pointer"
-				value="Me connecter"
-			/>
+				class="bg-[#3498db] my-2 w-full h-12 text-white normal-case cursor-pointer rounded"
+				>Me connecter</button
+			>
 		</form>
 		{#if notVerified == 3}
 			<div transition:fade class="alert alert-warning shadow-md">
@@ -175,15 +181,20 @@
 				</div>
 			</div>
 		{/if}
-		<div class="pt-6 flex gap-x-4 text-sm font-medium text-gray-700 border-t border-gray-200">
-			<a href="/auth/employers/signup" class="text-red-400 hover:text-purple-900"
+		<div
+			class="pt-6 flex flex-col gap-4 text-sm font-medium text-gray-700 border-t border-gray-200"
+		>
+			<a
+				href="/auth/employers/signup"
+				class="text-[#3498db] h-12 outline outline-[#3498db] rounded outline-1 flex justify-center items-center"
 				>Ouvrir un compte</a
 			>
-			<a href="/auth/users/signin" class="text-gray-400 hover:text-purple-900"
+			<!-- <a href="/auth/users/signin" class="text-gray-400 hover:text-purple-900"
 				>Je suis un utilisateur</a
-			>
+			> -->
 		</div>
 	</div>
+	<!--  -->
 	<div class="h-full w-full hidden sm:flex relative">
 		<div id="blur" class="absolute top-0 left-0 h-full w-full bg-[#00000060]" />
 		<img src="/images/banner-login.jpg" class="h-full w-full object-cover" alt="" />

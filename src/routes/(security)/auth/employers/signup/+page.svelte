@@ -38,11 +38,13 @@
 
 <!--  -->
 <section class="grid grid-cols-1 md:grid-cols-2 h-screen">
-	<div class="w-full px-4 xl:px-8 py-20 mx-auto bg-white flex flex-col justify-center gap-y-4">
+	<div
+		class="w-full px-4 xl:px-8 py-20 mx-auto bg-white flex flex-col justify-center gap-y-4 max-w-[500px]"
+	>
 		<h1
 			class="mb-4 mt-3 text-2xl font-extrabold leading-snug tracking-tight text-left text-gray-900 md:text-4xl"
 		>
-			Créer <span class="underline text-red-400">gratuitement</span> un compte pour votre entreprise
+			Créer mon compte <span class="underline text-[#3498db]">entreprise</span>
 		</h1>
 		<form
 			class="space-y-5"
@@ -130,19 +132,19 @@
 				};
 			}}
 		>
-			<div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+			<div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
 				<label class="block">
 					<span class="block mb-1 text-sm font-medium text-gray-700">Nom de famille</span>
 					<input
 						bind:this={user_input.firstname}
 						bind:value={input_value.firstname}
 						required
-						class="input input-bordered w-full"
+						class="input input-bordered w-full rounded"
 						type="text"
 						placeholder="Ex: Djossou"
 						name="firstname"
 					/>
-					<span bind:this={error_input.firstname} class="text-xs text-red-500" />
+					<span bind:this={error_input.firstname} class="text-xs text-[#3498db]" />
 				</label>
 				<label class="block">
 					<span class="block mb-1 text-sm font-medium text-gray-700">Prénom(s)</span>
@@ -150,12 +152,12 @@
 						bind:this={user_input.lastname}
 						bind:value={input_value.lastname}
 						required
-						class="input input-bordered w-full"
+						class="input input-bordered w-full rounded"
 						type="text"
 						placeholder="Ex: Jean"
 						name="lastname"
 					/>
-					<span bind:this={error_input.lastname} class="text-xs text-red-500" />
+					<span bind:this={error_input.lastname} class="text-xs text-[#3498db]" />
 				</label>
 			</div>
 			<label class="block">
@@ -164,12 +166,12 @@
 					bind:this={user_input.organization}
 					bind:value={input_value.organization}
 					required
-					class="input input-bordered w-full"
+					class="input input-bordered w-full rounded"
 					type="text"
 					placeholder="Ex: azohoue"
 					name="organization"
 				/>
-				<span bind:this={error_input.organization} class="text-xs text-red-500" />
+				<span bind:this={error_input.organization} class="text-xs text-[#3498db]" />
 			</label>
 			<label class="block">
 				<span class="block mb-1 text-sm font-medium text-gray-700">Votre adresse email</span>
@@ -177,12 +179,12 @@
 					bind:this={user_input.email}
 					bind:value={input_value.email}
 					required
-					class="input input-bordered w-full"
+					class="input input-bordered w-full rounded"
 					type="email"
 					placeholder="Ex: jean.djossou@azohoue.com"
 					name="email"
 				/>
-				<span bind:this={error_input.email} class="text-xs text-red-500" />
+				<span bind:this={error_input.email} class="text-xs text-[#3498db]" />
 			</label>
 			<label class="block">
 				<span class="block mb-1 text-sm font-medium text-gray-700"
@@ -195,31 +197,37 @@
 					bind:this={user_input.password}
 					bind:value={input_value.password}
 					required
-					class="input input-bordered w-full"
+					class="input input-bordered w-full rounded"
 					type="password"
 					placeholder="••••••••"
 					name="password"
 				/>
-				<span bind:this={error_input.password} class="text-xs text-red-500" />
+				<span bind:this={error_input.password} class="text-xs text-[#3498db]" />
 			</label>
 			<label class="flex items-center">
-				<input name="cdn" type="checkbox" class="checkbox" required />
+				<input name="cdn" type="checkbox" class="checkbox w-4 h-4 rounded" required />
 				<span class="block ml-2 text-xs font-medium text-gray-700 cursor-pointer"
-					>J'accepte les <a href="/cgu" class="text-red-500 underline">conditions d'utilisations</a>
+					>J'accepte les <a href="/cgu" class="text-[#3498db] underline"
+						>conditions d'utilisations</a
+					>
 					et la
-					<a href="/policy" class="text-red-400 underline">politique de confidentialité.</a></span
+					<a href="/policy" class="text-[#3498db] underline">politique de confidentialité.</a></span
 				>
-				<span class="text-xs text-red-500" />
+				<span class="text-xs text-[#3498db]" />
 			</label>
-			<input
+			<button
 				type="submit"
-				class="bg-red-400 text-white text-center px-4 py-2 rounded-md w-full sm:w-fit font-semibold cursor-pointer"
-				value="Ouvrir mon compte"
-			/>
+				class="bg-[#3498db] text-white text-center px-4 py-2 rounded w-full h-12 font-semibold cursor-pointer"
+				value="Ouvrir mon compte">Ouvrir mon compte</button
+			>
 		</form>
-		<div class="pt-6 text-sm font-medium text-gray-700 border-t border-gray-200">
-			Vous avez déjà un compte ?
-			<a href="/auth/employers/signin" class="text-red-400 hover:text-purple-900">Connectez-vous</a>
+		<hr />
+		<div class="text-sm font-medium text-gray-700 border-t border-gray-200">
+			<a
+				href="/auth/employers/signin"
+				class="text-[#3498db] h-12 outline outline-[#3498db] rounded outline-1 flex justify-center items-center"
+				>Connectez-vous</a
+			>
 		</div>
 	</div>
 	<div class="px-4 py-20 space-y-10 bg-[#F8F9FD] flex flex-col justify-center sm:px-20">
@@ -228,7 +236,7 @@
 				xmlns="http://www.w3.org/2000/svg"
 				viewBox="0 0 24 24"
 				fill="currentColor"
-				class="w-6 h-6 text-red-400"
+				class="w-6 h-6 text-[#3498db]"
 			>
 				<path
 					fill-rule="evenodd"
@@ -236,7 +244,7 @@
 					clip-rule="evenodd"
 				/>
 			</svg>
-			<a href="/" class="normal-case text-xl font-semibold text-[20px] h-fit text-red-400"
+			<a href="/" class="normal-case text-xl font-semibold text-[20px] h-fit text-[#3498db]"
 				>azohoue</a
 			>
 		</div>
@@ -245,7 +253,7 @@
 				xmlns="http://www.w3.org/2000/svg"
 				viewBox="0 0 20 20"
 				fill="currentColor"
-				class="flex-none w-6 h-6 mt-1 text-red-400"
+				class="flex-none w-6 h-6 mt-1 text-[#3498db]"
 			>
 				<path
 					fill-rule="evenodd"
@@ -254,7 +262,7 @@
 				/>
 			</svg>
 			<div>
-				<h2 class="text-xl font-medium text-red-400">Simplicité d'utilisation</h2>
+				<h2 class="text-xl font-medium text-[#3498db]">Simplicité d'utilisation</h2>
 				<p class="mt-1 text-gray-700">
 					Créer facilement des offres d'emploi, héberger directement sur notre site web.
 				</p>
@@ -265,7 +273,7 @@
 				xmlns="http://www.w3.org/2000/svg"
 				viewBox="0 0 20 20"
 				fill="currentColor"
-				class="flex-none w-6 h-6 mt-1 text-red-400"
+				class="flex-none w-6 h-6 mt-1 text-[#3498db]"
 			>
 				<path
 					fill-rule="evenodd"
@@ -274,7 +282,7 @@
 				/>
 			</svg>
 			<div>
-				<h2 class="text-xl font-medium text-red-400">Données sécurisées</h2>
+				<h2 class="text-xl font-medium text-[#3498db]">Données sécurisées</h2>
 				<p class="mt-1 text-gray-700">
 					Nous stockons uniquement le nécéssaire, les documents des personnes ayant postulé à votre
 					offre d'emploi sont visibles par vous uniquement.
@@ -286,7 +294,7 @@
 				xmlns="http://www.w3.org/2000/svg"
 				viewBox="0 0 20 20"
 				fill="currentColor"
-				class="flex-none w-6 h-6 mt-1 text-red-400"
+				class="flex-none w-6 h-6 mt-1 text-[#3498db]"
 			>
 				<path
 					fill-rule="evenodd"
@@ -295,7 +303,7 @@
 				/>
 			</svg>
 			<div>
-				<h2 class="text-xl font-medium text-red-400">Notifications mail instantanées</h2>
+				<h2 class="text-xl font-medium text-[#3498db]">Notifications mail instantanées</h2>
 				<p class="mt-1 text-gray-700">
 					Toutes les réponses à votre annonces seront directement envoyé dans votre boîte mail pour
 					vous permettre de répondre plus facilement aux candidatures.
@@ -307,7 +315,7 @@
 				xmlns="http://www.w3.org/2000/svg"
 				viewBox="0 0 20 20"
 				fill="currentColor"
-				class="flex-none w-6 h-6 mt-1 text-red-400"
+				class="flex-none w-6 h-6 mt-1 text-[#3498db]"
 			>
 				<path
 					fill-rule="evenodd"
@@ -316,7 +324,7 @@
 				/>
 			</svg>
 			<div>
-				<h2 class="text-xl font-medium text-red-400">Outils d'analyse et de promotion</h2>
+				<h2 class="text-xl font-medium text-[#3498db]">Outils d'analyse et de promotion</h2>
 				<p class="mt-1 text-gray-700">
 					Visualisé le nombre de personne ayant consulter votre publication et faites-en la
 					promotion auprès de plus de monde.

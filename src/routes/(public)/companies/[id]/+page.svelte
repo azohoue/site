@@ -16,7 +16,7 @@
 		/>
 	</div>
 	<div id="company-box" class="h-fit">
-		<div id="company-logo" class="w-full h-[80px] px-4 sm:px-40">
+		<div id="company-logo" class="w-full h-[80px] px-4 sm:px-14">
 			<img
 				src={company.logo
 					? `${PUBLIC_API_URL}/api/files/organizations/${company.id}/${company.logo}`
@@ -27,7 +27,7 @@
 		</div>
 		<div
 			id="company-description"
-			class="h-fit w-full px-4 sm:px-40 grid grid-cols-1 xl:grid-cols-[2fr,1fr] gap-10"
+			class="h-fit w-full px-4 sm:px-14 grid grid-cols-1 xl:grid-cols-[2fr,1fr] gap-10"
 		>
 			<div class="flex flex-col gap-y-2">
 				<div id="company-name" class="flex flex-wrap gap-x-1 items-center">

@@ -194,13 +194,12 @@
 				</div>
 				<div class="w-full px-4">
 					<div class="form-control w-full">
-						<label class="label">
-							<span class="label-text">Décriver votre entreprise</span>
-						</label>
-
+						<!-- <label class="label">
+							<span class="label-text"></span>
+						</label> -->
 						<!-- was textarea -->
 						<div id="offer-description" class="flex flex-col gap-1">
-							<h3 class="text-md font-semibold">Description du poste</h3>
+							<h3 class="text-md font-semibold">Décriver votre entreprise</h3>
 							<span class="text-sm text-[#8A8FAC]"
 								>Donner plus de détails sur le poste dont vous souhaitez faire l'annonce.</span
 							>
