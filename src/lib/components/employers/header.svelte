@@ -4,7 +4,7 @@
 	export let name: any, email: any, id: any, picUrl: any;
 </script>
 
-<div class="navbar bg-base-100 lg:px-10 fixed h-16 py-0 z-20 w-screen">
+<div class="flex sm:hidden navbar bg-base-100 lg:px-10 fixed h-16 py-0 z-20 w-screen">
 	<div class="flex-1 h-full">
 		<div class="px-4 flex justify-center items-center gap-1 text-[#3498db]">
 			<svg
@@ -67,7 +67,7 @@
 			<span class="text-gray-400 text-sm font-semibold">{email}</span>
 		</div> -->
 		<div class="dropdown dropdown-end block sm:hidden">
-			<label for="" tabindex="0">
+			<label for="" tabindex="0" class="text-[#3498db]">
 				<div class="w-10 rounded-full flex justify-center items-center">
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
@@ -94,6 +94,14 @@
 				<li><a href="/employers/create-job">Créer une offre</a></li>
 				<!-- svelte-ignore a11y-missing-attribute -->
 				<li><a href="/employers/settings">Paramètres</a></li>
+				<hr />
+
+				<li class="text-red-500">
+					<form action="/employers/home?/signout" method="POST">
+						<input type="hidden" name="disconnect" value="" />
+						<button class="h-full w-full">Déconnexion</button>
+					</form>
+				</li>
 			</ul>
 		</div>
 	</div>

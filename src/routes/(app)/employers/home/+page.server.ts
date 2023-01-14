@@ -1,3 +1,4 @@
+import { convertTime } from '$lib/utils/dateConverter';
 import type { PageServerLoad } from './$types';
 import { redirect, type Actions } from '@sveltejs/kit';
 
@@ -7,6 +8,9 @@ export const load = (
         // Load employer job propositions from here
         let jobs = await locals.pb.collection("jobs").getList(1, 10, {
             filter: `organization='${parentData.organization.id}'`
+        })
+        jobs.items.forEach((item) => {
+            item.created = convertTime(item.created)
         })
         jobs = jobs.items.map((item: any) => {
             return JSON.parse(JSON.stringify(item))

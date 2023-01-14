@@ -49,10 +49,13 @@
 <svelte:head>
 	<title>Créer une offre</title>
 </svelte:head>
-<section id="creator" class="w-full h-full flex justify-center py-10 px-4 sm:px-0">
-	<div class="w-full sm:w-[80vw] lg:w-[60vw] h-fit mb-10">
-		<div id="offer-header" class="mb-5 border-b-2">
-			<h3 class="text-[20px] font-semibold h-10">Créer une offre d'emploi</h3>
+<section
+	id="creator"
+	class="w-full h-full flex justify-center sm:justify-start relative top-10 sm:top-0 py-10 px-4 sm:px-10"
+>
+	<div class="w-full sm:w-[80vw] mx-auto lg:w-[60vw] h-fit mb-10">
+		<div id="offer-header" class="mb-5">
+			<h3 class="text-[20px] font-semibold h-10">Nouvelle offre d'emploi</h3>
 		</div>
 		<form
 			method="POST"
@@ -90,7 +93,7 @@
 				<input
 					name="name"
 					type="text"
-					class="input input-bordered w-full"
+					class="input input-bordered w-full rounded"
 					placeholder="Ex: Designer UI/UX"
 				/>
 			</div>
@@ -98,7 +101,7 @@
 			<div id="location-salary" class="flex flex-col sm:flex-row gap-5">
 				<div class="form-control w-full gap-1">
 					<h3 class="text-md font-semibold">Localisation</h3>
-					<select name="location" class="select select-bordered w-full">
+					<select name="location" class="select select-bordered w-full rounded">
 						<option selected>Bénin</option>
 						<option>Burkina Faso</option>
 						<option>Côte d'ivoire</option>
@@ -110,7 +113,7 @@
 				</div>
 				<div class="form-control w-full gap-1">
 					<h3 class="text-md font-semibold">Salaire</h3>
-					<select name="salary" class="select select-bordered w-full">
+					<select name="salary" class="select select-bordered w-full rounded">
 						<option selected>50.000F - 100.000F</option>
 						<option>100.000F - 200.000F</option>
 						<option>200.000F - 500.000F</option>
@@ -122,7 +125,7 @@
 			<!--  -->
 			<div id="offer-contrat" class="flex flex-col gap-1">
 				<h3 class="text-md font-semibold">Type de contrat</h3>
-				<select name="contract" class="select select-bordered w-full">
+				<select name="contract" class="select select-bordered w-full rounded">
 					<option selected>CDD</option>
 					<option>CDI</option>
 					<option>Contrat d'apprentissage</option>
@@ -251,7 +254,7 @@
 						<textarea
 							bind:value={emploi.description}
 							on:input={renderHTML}
-							class="w-full h-full p-2 resize-none outline-none"
+							class="w-full h-full p-2 resize-none outline-none rounded"
 							placeholder="Ex: Nous somme à la recherche d'un designer avec au moins 2 années d'expérience..."
 						/>
 						<input type="hidden" name="description" value={pHTML} />
@@ -266,7 +269,9 @@
 				/>
 			</div>
 			<div class="h-[60px] w-full mb-10 flex items-center justify-end">
-				<button class="btn normal-case">Soumettre l'offre</button>
+				<button class="bg-[#3498db] text-white h-12 rounded font-semibold w-full"
+					>Soumettre l'offre</button
+				>
 			</div>
 		</form>
 	</div>

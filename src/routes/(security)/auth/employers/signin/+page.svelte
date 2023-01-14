@@ -136,7 +136,7 @@
 			<button
 				bind:this={sbt}
 				type="submit"
-				class="bg-[#3498db] my-2 w-full h-12 text-white normal-case cursor-pointer rounded"
+				class="bg-[#3498db] font-semibold my-2 w-full h-12 text-white normal-case cursor-pointer rounded"
 				>Me connecter</button
 			>
 		</form>
