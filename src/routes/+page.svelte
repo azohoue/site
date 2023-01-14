@@ -9,9 +9,9 @@
 	<title>Azohoue | Un emploi pour tous</title>
 </svelte:head>
 <div class="h-fit w-full flex flex-col">
-	<div class="navbar h-16 px-4 sm:px-16 z-50 bg-transparent text-white">
+	<div class="navbar h-16 px-4 sm:px-16 z-50 bg-[#3498db] text-white shadow-md">
 		<div class="navbar-start">
-			<div class="flex justify-center items-center gap-1 text-[#34495e]">
+			<div class="flex justify-center items-center gap-1">
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
 					viewBox="0 0 24 24"
@@ -28,7 +28,7 @@
 			</div>
 		</div>
 		<div class="navbar-center hidden lg:flex items-center">
-			<ul class="menu menu-horizontal px-1 text-[#34495e] text-sm">
+			<ul class="menu menu-horizontal px-1 text-base font-normal font-sans">
 				<li class="px-0 py-3">
 					<a href="">Tous les offres</a>
 				</li>
@@ -52,7 +52,7 @@
 						<li><a href="/auth/users/signin">Me connecter</a></li>
 					</ul>
 				</li>
-				<li class="px-0 py-3 text-red-400" tabindex="0">
+				<li class="px-0 py-3" tabindex="0">
 					<span>
 						Compte Entreprise
 						<svg
@@ -72,7 +72,7 @@
 			</ul>
 		</div>
 		<div class="navbar-end flex gap-x-4">
-			<div class="hidden sm:flex gap-8 md:place-self-center md:justify-self-end text-[#34495e]">
+			<!-- <div class="hidden sm:flex gap-8 md:place-self-center md:justify-self-end text-[#34495e]">
 				<a href="https://twitter.com/azohoue_site"
 					><svg
 						xmlns="http://www.w3.org/2000/svg"
@@ -93,63 +93,46 @@
 						/>
 					</svg></a
 				>
-			</div>
+			</div> -->
 			<a
-				href="/auth/users/signin"
-				class="flex sm:hidden bg-[#34495e] px-4 py-2 rounded-md text-white font-semibold cursor-pointer"
-				>Connexion</a
+				href="/employers/"
+				class="flex bg-transparent hover:bg-white border rounded border-white hover:text-gray-700 px-4 py-2 text-white font-semibold cursor-pointer"
+				>Poster une offre</a
 			>
 		</div>
 	</div>
 	<!-- Hero -->
 	<div
 		id="hero"
-		class="bg-white select-none relative z-0 px-4 gap-x-2 sm:px-0 w-full mx-auto xl:w-[80vw] h-[396px] sm:h-[460px] flex flex-col text-center justify-around sm:justify-around content-around"
+		class="bg-white select-none relative z-0 px-4 gap-x-2 w-full sm:px-16 h-[396px] sm:h-[460px] grid sm:grid-cols-2 text-center justify-around sm:justify-around content-around"
 	>
-		<div class="-z-50 absolute h-full w-full flex items-center justify-center">
-			<img
-				src="/images/banner.gif"
-				class="absolute  h-[500px] w-full sm:w-[500px] select-none blur-sm md:blur-lg object-fill"
+		<div class="flex flex-col gap gap-y-5 justify-center content-between">
+			<!-- <img
+				src="/images/banner.png"
+				class="absolute flex sm:hidden -z-30 h-full w-full blur-sm  object-cover"
 				alt=""
-			/>
+			/> -->
+			<h3
+				id="banner-text"
+				class="font-semibold text-2xl sm:text-4xl text-gray-700 text-center sm:text-start"
+			>
+				Trouver votre emploi <br /> sur <span class="underline text-[#3498db]">azohoue</span>
+			</h3>
+			<h4 class="font-normal text-base text-gray-700 text-center sm:text-start">
+				Parcourer les annonces et à postuler à celles qui vous intéressent en vous inscrivant
+				gratuitement sur notre plateforme.
+			</h4>
+			<span class="text-xs select-text sm:text-left text-center"
+				>Powered by <a href="https://devagency.ga" class="underline"><i>DevAgency</i></a>
+			</span>
 		</div>
-		<h3 id="banner-text" class="font-semibold text-2xl sm:text-5xl text-[#34495e]">
-			Trouver votre emploi plus facilement sur <span class="underline text-red-400">azohoue</span>
-		</h3>
-		<h4 class="font-normal text-base">
-			Bienvenue sur notre site d'offres d'emploi ! <br /> Parcourer les annonces et à postuler à celles
-			qui vous intéressent en vous inscrivant gratuitement sur notre plateforme.
-		</h4>
-		<!-- <div class="form-control">
-			<div class="input-group w-full">
-				<input
-					type="text"
-					placeholder="Ex: Designer UI/UX"
-					class="input input-bordered w-full border-red-400 text-red-400"
-				/>
-				<button class="px-2 py-2 bg-red-400 text-white">
-					<svg
-						xmlns="http://www.w3.org/2000/svg"
-						class="h-6 w-6"
-						fill="none"
-						viewBox="0 0 24 24"
-						stroke="currentColor"
-						><path
-							stroke-linecap="round"
-							stroke-linejoin="round"
-							stroke-width="2"
-							d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-						/></svg
-					>
-				</button>
-			</div>
-		</div> -->
-		<span class="text-xs select-text"
-			>Powered by <a href="https://devagency.ga" class="underline"><i>DevAgency</i></a>
-		</span>
+		<div class="h-[460px] w-full hidden sm:flex justify-center items-center">
+			<img src="/images/banner.png" class="h-full w-full object-cover" alt="" />
+		</div>
 	</div>
-	<div class="z-50 w-full h-fit mx-auto flex flex-col gap-y-4 pb-10 px-4 bg-[#F8F9FD]">
-		<h5 class="font-semibold sm:w-[70vw] mx-auto text-center pt-4 text-[#34495e]">
+	<!--  -->
+	<div class="z-50 w-full h-fit min-h-[50vh] mx-auto flex flex-col gap-y-4 pb-10 px-4 bg-[#F8F9FD]">
+		<h5 class="font-semibold sm:w-[70vw] mx-auto text-left pt-4 text-[#34495e]">
 			Dernières offres
 		</h5>
 		<div id="offers" class="flex flex-col gap-y-4 w-full sm:w-[70vw] mx-auto min-h-[280px]">
@@ -168,23 +151,24 @@
 						/>
 					</div>
 					<div class="w-full h-full flex flex-col justify-center py-2">
-						<h3 class="text-[#202020] font-bold text-base sm:text-lg">{job.name}</h3>
-						<p class="flex mb-1">
-							<span
-								class="capitalize gap-x-1 flex items-center text-sm font-semibold text-[#A4A4A4]"
+						<h3 class="text-gray-900 font-bold text-base sm:text-lg">{job.name}</h3>
+						<p class="flex mb-1 items-center gap-1">
+							<span class="capitalize gap-x-1 flex items-center text-sm font-semibold text-gray-500"
 								>{job.expand.organization.name}</span
 							>
 							{#if job.expand.organization.badge}
 								<svg
 									xmlns="http://www.w3.org/2000/svg"
+									fill="none"
 									viewBox="0 0 24 24"
-									fill="#DC2626"
-									class="w-5 h-5"
+									stroke-width="1.5"
+									stroke="#3498db"
+									class="w-4 h-4"
 								>
 									<path
-										fill-rule="evenodd"
-										d="M8.603 3.799A4.49 4.49 0 0112 2.25c1.357 0 2.573.6 3.397 1.549a4.49 4.49 0 013.498 1.307 4.491 4.491 0 011.307 3.497A4.49 4.49 0 0121.75 12a4.49 4.49 0 01-1.549 3.397 4.491 4.491 0 01-1.307 3.497 4.491 4.491 0 01-3.497 1.307A4.49 4.49 0 0112 21.75a4.49 4.49 0 01-3.397-1.549 4.49 4.49 0 01-3.498-1.306 4.491 4.491 0 01-1.307-3.498A4.49 4.49 0 012.25 12c0-1.357.6-2.573 1.549-3.397a4.49 4.49 0 011.307-3.497 4.49 4.49 0 013.497-1.307zm7.007 6.387a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z"
-										clip-rule="evenodd"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+										d="M9 12.75L11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 01-1.043 3.296 3.745 3.745 0 01-3.296 1.043A3.745 3.745 0 0112 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 01-3.296-1.043 3.745 3.745 0 01-1.043-3.296A3.745 3.745 0 013 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 011.043-3.296 3.746 3.746 0 013.296-1.043A3.746 3.746 0 0112 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 013.296 1.043 3.746 3.746 0 011.043 3.296A3.745 3.745 0 0121 12z"
 									/>
 								</svg>
 							{/if}
@@ -197,7 +181,7 @@
 									viewBox="0 0 24 24"
 									stroke-width="1.5"
 									stroke="currentColor"
-									class="hidden w-4 h-4"
+									class="hidden sm:flex w-4 h-4"
 								>
 									<path
 										stroke-linecap="round"
@@ -257,7 +241,7 @@
 		</div>
 	</div>
 	<!-- footer -->
-	<footer class="footer bg-gray-600 text-white items-center sm:px-8 p-4">
+	<footer class="footer bg-gray-800 text-white items-center sm:px-8 p-4">
 		<div class="items-center grid-flow-col">
 			<svg
 				xmlns="http://www.w3.org/2000/svg"

@@ -23,8 +23,8 @@
 </script>
 
 <section class="bg-[#F8F9FD] h-fit sm:h-full">
-	<div class="px-4 py-20 mx-auto max-w-7xl h-full ">
-		<a href="/" class="flex items-center justify-start sm:justify-center text-red-400">
+	<div class="px-4 py-20 mx-auto max-w-6xl h-full ">
+		<a href="/" class="flex items-center justify-start sm:justify-center text-[#3498db]">
 			<svg
 				xmlns="http://www.w3.org/2000/svg"
 				viewBox="0 0 24 24"
@@ -40,7 +40,7 @@
 			<span class="font-semibold">azohoue</span>
 		</a>
 		<div
-			class="w-full px-0 pt-5 pb-6 mx-auto mt-4 mb-0 space-y-4 bg-transparent border-0 border-gray-200 rounded-lg md:bg-white md:border sm:w-10/12 md:w-10/12 lg:w-8/12 xl:w-8/12 md:px-6 sm:mt-8 sm:mb-5"
+			class="w-full px-0 mx-auto mt-4 mb-0 space-y-4 bg-transparent border-0 border-gray-200 rounded-lg md:bg-white md:border sm:w-10/12 md:w-10/12 lg:w-8/12 xl:w-8/12 md:px-6 md:py-6 sm:mt-8 sm:mb-5"
 		>
 			<h1 class="mb-5 text-xl text-left text-gray-800 sm:text-center font-semibold">
 				Compte Utilisateur | Inscription
@@ -128,7 +128,7 @@
 							bind:this={user_input.lastname}
 							bind:value={user.lastname}
 							name="lastname"
-							class="input input-bordered w-full"
+							class="input input-bordered w-full rounded"
 							type="text"
 							placeholder="Ex: Djossou"
 							required
@@ -142,7 +142,7 @@
 							bind:this={user_input.firstname}
 							bind:value={user.firstname}
 							name="firstname"
-							class="input input-bordered w-full"
+							class="input input-bordered w-full rounded"
 							type="text"
 							placeholder="Ex: Jean"
 							required
@@ -157,7 +157,7 @@
 						name="email"
 						bind:this={user_input.email}
 						bind:value={user.email}
-						class="input input-bordered w-full"
+						class="input input-bordered w-full rounded"
 						type="email"
 						placeholder="Ex: jean.djossou@azohoue.com"
 						inputmode="email"
@@ -171,7 +171,7 @@
 						name="password"
 						bind:this={user_input.password}
 						bind:value={user.password}
-						class="input input-bordered w-full"
+						class="input input-bordered w-full rounded"
 						type="password"
 						placeholder="••••••••"
 						required
@@ -180,28 +180,30 @@
 				</label>
 				<div class="flex flex-col items-start justify-between sm:items-center sm:flex-row">
 					<label class="flex items-center">
-						<input name="cdn" type="checkbox" class="checkbox" required />
+						<input name="cdn" type="checkbox" class="w-4 h-4 text-[#3498db] rounded" required />
 						<span class="block ml-2 text-xs font-medium text-gray-700 cursor-pointer"
-							>J'accepte les <a href="/cgu" class="text-red-500 underline"
+							>J'accepte les <a href="/cgu" class="text-[#3498db] underline"
 								>conditions d'utilisations</a
 							>
 							et la
-							<a href="/policy" class="text-red-400 underline">politique de confidentialité.</a
+							<a href="/policy" class="text-[#3498db] underline">politique de confidentialité.</a
 							></span
 						>
 						<span class="text-xs text-red-500" />
 					</label>
-					<input
+					<button
 						type="submit"
-						class="w-full mt-5 btn btn-error text-white sm:w-auto sm:mt-0 normal-case"
-						value="Ouvrir mon compte"
-					/>
+						class="w-full mt-5 bg-[#3498db] rounded h-12 px-4 font-semibold flex justify-center items-center text-white sm:w-auto sm:mt-0 normal-case"
+						>Ouvrir mon compte</button
+					>
 				</div>
 			</form>
 		</div>
-		<p class="my-0 text-xs font-medium text-center text-gray-700 sm:my-5 pb-10">
-			Vous avez déjà un compte ?
-			<a href="/auth/users/signin" class="text-red-400 hover:text-red-900">Connectez-vous</a>
-		</p>
+		<div class="divider max-w-2xl mx-auto my-10 text-gray-800">OU</div>
+		<a
+			href="/auth/users/signin"
+			class="text-[#3498db] h-12 outline outline-[#3498db] rounded outline-1 flex justify-center items-center max-w-xs mx-auto"
+			>Connectez-vous</a
+		>
 	</div>
 </section>
