@@ -5,7 +5,7 @@
 </script>
 
 <div class="navbar bg-base-100 lg:px-10 fixed h-16 py-0 z-20 w-screen">
-	<div class="flex-1 h-full text-red-400">
+	<div class="flex-1 h-full text-[#3498db]">
 		<div class="px-4 flex justify-center items-center gap-1">
 			<svg
 				xmlns="http://www.w3.org/2000/svg"
@@ -96,7 +96,7 @@
 	<div class="flex-none gap-2">
 		<div class="dropdown dropdown-left dropdown-bottom">
 			<label tabindex="0" class="btn btn-ghost btn-circle avatar">
-				<div class="w-10 rounded-full ring ring-red-400">
+				<div class="w-10 rounded-full">
 					<img
 						class="object-cover"
 						src={user.avatar
@@ -111,14 +111,14 @@
 			>
 				<form action="/users/home?/signout" method="POST">
 					<input type="hidden" name="disconnect" value="" />
-					<li class="text-red-400"><button type="submit">Se déconnecter</button></li>
+					<li class="text-[#3498db]"><button type="submit">Se déconnecter</button></li>
 				</form>
 			</ul>
 		</div>
-		<div class="hidden sm:flex flex-col">
-			<h4 class="font-semibold text-red-400">{user.firstname} {user.lastname}</h4>
+		<!-- <div class="hidden sm:flex flex-col">
+			<h4 class="font-semibold text-[#3498db]">{user.firstname} {user.lastname}</h4>
 			<span class="text-[#A4A4A4] text-sm font-normal">{user.email}</span>
-		</div>
+		</div> -->
 		<div class="dropdown dropdown-end block sm:hidden">
 			<label for="" tabindex="0">
 				<div class="w-10 rounded-full flex justify-center items-center">
@@ -150,7 +150,7 @@
 				<hr />
 				<form action="/users/home?/signout" method="POST">
 					<input type="hidden" name="disconnect" value="" />
-					<li class="text-red-400"><button type="submit">Se déconnecter</button></li>
+					<li class="text-[#3498db]"><button type="submit">Se déconnecter</button></li>
 				</form>
 			</ul>
 		</div>
@@ -159,7 +159,7 @@
 
 <style>
 	.tab-active {
-		color: #f87171 !important;
-		border-bottom: 2px solid #f87171 !important;
+		color: #3498db !important;
+		border-bottom: 2px solid #3498db !important;
 	}
 </style>

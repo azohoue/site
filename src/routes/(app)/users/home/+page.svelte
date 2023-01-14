@@ -3,6 +3,7 @@
 	import { enhance } from '$app/forms';
 	import { fade, fly } from 'svelte/transition';
 	import type { PageData } from '../jobs/$typess';
+	import { PUBLIC_API_URL } from '$env/static/public';
 
 	export let data: PageData;
 	export let form: FormData;
@@ -98,11 +99,11 @@
 				type="text"
 				name="query"
 				placeholder="Recherche une offre d'emploi. Ex: Développeur Web"
-				class="py-3 outline-red-400 px-4 block w-full border-gray-200 shadow-sm rounded-l-md text-sm focus:z-10 focus:border-red-500 focus:ring-red-500 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400"
+				class="py-3 outline-[#3498db] px-4 block w-full border-gray-200 shadow-sm rounded-l-md text-sm focus:z-10 focus:border-[#3498db] focus:ring-[#3498db] dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400"
 			/>
 			<button
 				type="submit"
-				class="shadow-sm inline-flex flex-shrink-0 justify-center items-center h-[2.875rem] w-[2.875rem] rounded-r-md border border-transparent font-semibold bg-red-400 text-white hover:bg-red-600 focus:z-10 focus:outline-none focus:ring-2 focus:ring-red-500 transition-all text-sm"
+				class="shadow-sm inline-flex flex-shrink-0 justify-center items-center h-[2.875rem] w-[2.875rem] rounded-r-md border border-transparent font-semibold bg-[#3498db] text-white hover:bg-[#3498db] focus:z-10 focus:outline-none focus:ring-2 focus:ring-[#3498db] transition-all text-sm"
 			>
 				<svg
 					class="h-4 w-4"
@@ -133,9 +134,7 @@
 		{/if}
 	</div>
 	<!--  -->
-	<div
-		class="w-full h-fit xl:w-[80vw] sm:grid sm:grid-cols-[280px,1fr] xl:grid-cols-[280px,1fr,280px]"
-	>
+	<div class="w-full h-fit xl:w-[80vw] sm:grid sm:grid-cols-[220px,1fr]">
 		<div class="filter-container flex-col items-start hidden sm:flex">
 			<div id="filter-header" class="flex gap-x-1 justify-center items-center mb-4">
 				<svg
@@ -156,7 +155,7 @@
 			</div>
 			<div class="flex flex-col gap-4">
 				<div id="location-filter" class="flex flex-col gap-2">
-					<h3 class="text-md font-semibold text-red-400">Localisation</h3>
+					<h3 class="text-md font-semibold text-[#3498db]">Localisation</h3>
 					<div id="location-values" class="flex flex-col gap-y-4">
 						<div class="flex gap-x-1">
 							<input
@@ -239,7 +238,7 @@
 				</div>
 				<!--  -->
 				<div id="salary-filter" class="flex flex-col gap-2">
-					<h3 class="text-md font-semibold text-red-400">Salaire</h3>
+					<h3 class="text-md font-semibold text-[#3498db]">Salaire</h3>
 					<div id="salary-values" class="flex flex-col gap-y-4">
 						<div class="flex gap-x-1">
 							<input
@@ -308,7 +307,7 @@
 				</div>
 				<!--  -->
 				<div id="contract-filter" class="flex flex-col gap-2">
-					<h3 class="text-md font-semibold text-red-400">Type de contrat</h3>
+					<h3 class="text-md font-semibold text-[#3498db]">Type de contrat</h3>
 					<div id="location-values" class="flex flex-col gap-y-4">
 						<div class="flex gap-x-1">
 							<input type="checkbox" class="checkbox" />
@@ -339,38 +338,51 @@
 					</select>
 				</div>
 			</div>
-			<div id="list" class="w-full flex flex-col gap-y-4">
+			<div id="list" class="w-full flex gap-4 flex-wrap">
 				{#each jobs as job}
-					<div
-						in:fly={{
-							x: -200
-						}}
-						class="bg-white w-full h-[184px] border-[1px] rounded-md shadow-sm p-4 flex flex-col justify-center gap-2"
-					>
-						<div class="flex justify-between">
-							<h6 class="text-base font-semibold text-gray-400 flex items-center gap-x-1">
-								<span class="capitalize">{job.expand.organization.name}</span>
-								{#if job.expand.organization.badge}
-									<svg
-										xmlns="http://www.w3.org/2000/svg"
-										viewBox="0 0 24 24"
-										fill="#DC2626"
-										class="w-5 h-5"
+					<div class="h-fit w-full sm:w-72 flex flex-col  border-[1px] rounded bg-white p-4 gap-4">
+						<div class="grid grid-cols-[60px,1fr] gap-x-2">
+							<div>
+								<img
+									class="w-[60px] h-[60px] sm:h-[60px] rounded-md object-cover"
+									src={job.expand.organization.logo
+										? `${PUBLIC_API_URL}/api/files/organizations/${job.expand.organization.id}/${job.expand.organization.logo}`
+										: '/images/empty.jpg'}
+									alt=""
+								/>
+							</div>
+							<div class="overflow-x-hidden flex flex-col justify-center">
+								<h3 class="text-gray-900 font-bold text-base w-full sm:text-lg	whitespace-nowrap">
+									{job.name}
+								</h3>
+								<p class="flex mb-1 items-center gap-1">
+									<span
+										class="capitalize gap-x-1 flex items-center text-sm font-semibold text-gray-500"
+										>{job.expand.organization.name}</span
 									>
-										<path
-											fill-rule="evenodd"
-											d="M8.603 3.799A4.49 4.49 0 0112 2.25c1.357 0 2.573.6 3.397 1.549a4.49 4.49 0 013.498 1.307 4.491 4.491 0 011.307 3.497A4.49 4.49 0 0121.75 12a4.49 4.49 0 01-1.549 3.397 4.491 4.491 0 01-1.307 3.497 4.491 4.491 0 01-3.497 1.307A4.49 4.49 0 0112 21.75a4.49 4.49 0 01-3.397-1.549 4.49 4.49 0 01-3.498-1.306 4.491 4.491 0 01-1.307-3.498A4.49 4.49 0 012.25 12c0-1.357.6-2.573 1.549-3.397a4.49 4.49 0 011.307-3.497 4.49 4.49 0 013.497-1.307zm7.007 6.387a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z"
-											clip-rule="evenodd"
-										/>
-									</svg>
-								{/if}
-							</h6>
-							<span>{job.created}</span>
+									{#if job.expand.organization.badge}
+										<svg
+											xmlns="http://www.w3.org/2000/svg"
+											fill="none"
+											viewBox="0 0 24 24"
+											stroke-width="1.5"
+											stroke="#3498db"
+											class="w-4 h-4"
+										>
+											<path
+												stroke-linecap="round"
+												stroke-linejoin="round"
+												d="M9 12.75L11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 01-1.043 3.296 3.745 3.745 0 01-3.296 1.043A3.745 3.745 0 0112 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 01-3.296-1.043 3.745 3.745 0 01-1.043-3.296A3.745 3.745 0 013 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 011.043-3.296 3.746 3.746 0 013.296-1.043A3.746 3.746 0 0112 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 013.296 1.043 3.746 3.746 0 011.043 3.296A3.745 3.745 0 0121 12z"
+											/>
+										</svg>
+									{/if}
+								</p>
+							</div>
 						</div>
-						<h3 class="font-semibold text-[20px] flex">
-							{job.name}
-						</h3>
-						<div class="job-details flex gap-4">
+						<!--  -->
+						<p class="text-sm">{job.created}</p>
+						<!--  -->
+						<div class="flex gap-x-4 text-sm flex-col gap-y-4">
 							<div class="flex gap-1 items-center">
 								<svg
 									xmlns="http://www.w3.org/2000/svg"
@@ -378,7 +390,7 @@
 									viewBox="0 0 24 24"
 									stroke-width="1.5"
 									stroke="currentColor"
-									class="w-4 h-4"
+									class="flex w-4 h-4"
 								>
 									<path
 										stroke-linecap="round"
@@ -393,7 +405,8 @@
 								</svg>
 								<span>{job.location}</span>
 							</div>
-							<div class="flex gap-1 items-center">
+
+							<div class="gap-1 items-center flex">
 								<svg
 									xmlns="http://www.w3.org/2000/svg"
 									fill="none"
@@ -410,7 +423,8 @@
 								</svg>
 								<span>{job.contract}</span>
 							</div>
-							<div class="flex gap-1 items-center">
+
+							<div class="gap-1 items-center flex">
 								<svg
 									xmlns="http://www.w3.org/2000/svg"
 									fill="none"
@@ -427,42 +441,18 @@
 								</svg>
 								<span>{job.salary}</span>
 							</div>
-						</div>
-						<div class="flex justify-between items-end text-[#EE786B]">
-							<a href="/users/jobs/{job.id}" class="cursor-pointer">Voir plus de détails > </a>
-							<!-- svelte-ignore a11y-click-events-have-key-events -->
-							<!-- <label
-								on:click={() => {
-									modal_content.job_name = job.name;
-									modal_content.job_contract = job.contract;
-									modal_content.job_location = job.location;
-									modal_content.job_id = job.id;
-									(modal_content.job_salary = job.salary),
-										(modal_content.job_organization_name = job.expand.organization.name);
-									modal_content.job_date = job.created;
-								}}
-								for="job-action"
-								class="cursor-pointer border-[1px] font-semibold rounded-md px-[16px] py-[7.2px] border-[#EE786B] text-[#EE786B] normal-case"
-								>Postuler</label
-							> -->
 							<a
-								href={'mailto:' +
-									job.expand.organization.email +
-									'?subject=Candidature pour le poste de ' +
-									job.name +
-									'&body=Je postule pour la candidature suivante: https://azohoue.ga/jobs/' +
-									job.id}
-								class="cursor-pointer border-[1px] font-semibold rounded-md px-[16px] py-[7.2px] border-[#EE786B] text-[#EE786B] normal-case"
-								>Postuler</a
+								href={'/users/jobs/' + job.id}
+								class="border rounded border-[#3498db] text-[#3498db] h-10 w-full flex justify-center items-center"
+								>Consulter l'offre</a
 							>
 						</div>
 					</div>
 				{:else}
-					<i transition:fade>Aucune offre à afficher</i>
+					<i>Aucune offre à afficher</i>
 				{/each}
 			</div>
 		</div>
-		<div class="hidden xl:flex" />
 	</div>
 	<input type="checkbox" id="job-action" class="modal-toggle" />
 	<div class="modal modal-bottom sm:modal-middle ">
@@ -550,7 +540,7 @@
 				</div>
 				<div id="offer-name" class="flex flex-col gap-1">
 					<h3 class="text-md font-semibold">
-						Ajouter votre CV <span class="text-red-400">*</span>
+						Ajouter votre CV <span class="text-[#3498db]">*</span>
 					</h3>
 					<label
 						for="cv"

@@ -28,8 +28,8 @@
 </script>
 
 <section class="bg-[#F8F9FD] h-full">
-	<div class="px-4 py-20 mx-auto max-w-7xl h-full">
-		<a href="/" class="flex items-center justify-start sm:justify-center text-red-400">
+	<div class="px-4 py-20 h-full max-w-[500px] mx-auto">
+		<a href="/" class="flex items-center justify-start sm:justify-center text-[#3498db]">
 			<svg
 				xmlns="http://www.w3.org/2000/svg"
 				viewBox="0 0 24 24"
@@ -45,11 +45,9 @@
 			<span class="font-semibold">azohoue</span>
 		</a>
 		<div
-			class="w-full px-0 pt-5 pb-6 mx-auto mt-4 mb-0 space-y-4 bg-transparent border-0 border-gray-200 rounded-lg md:bg-white md:border sm:w-10/12 md:w-8/12 lg:w-6/12 xl:w-6/12 md:px-6 sm:mt-8 sm:mb-5"
+			class="w-full sm:p-6 mx-auto mt-4 mb-0 space-y-4 bg-transparent border-0 border-gray-200 rounded-lg md:bg-white md:border"
 		>
-			<h1 class="mb-5 text-xl font-semibold text-left text-gray-800 sm:text-center">
-				Compte Utilisateur | Connexion
-			</h1>
+			<h1 class="mb-5 text-xl font-semibold text-left text-gray-800">Page de Connexion</h1>
 			<form
 				class="pb-1 space-y-4"
 				method="post"
@@ -103,11 +101,11 @@
 				}}
 			>
 				<label class="block">
-					<span class="block mb-1 text-md font-medium text-gray-700">Votre adresse email</span>
+					<span class="block mb-1 text-sm text-gray-700">Votre addresse email</span>
 					<input
 						bind:this={user_input.email}
 						bind:value={input_value.email}
-						class="input input-bordered w-full"
+						class="input input-bordered w-full rounded"
 						type="email"
 						placeholder="Ex: jean.djossou@azohoue.com"
 						name="email"
@@ -116,83 +114,84 @@
 					<span bind:this={error_input.email} class="text-xs text-red-500" />
 				</label>
 				<label class="block">
-					<span class="block mb-1 text-md font-medium text-gray-700">Votre mot de passe</span>
+					<span class="block mb-1 text-sm font-medium text-gray-700">Votre mot de passe</span>
 					<input
 						bind:this={user_input.password}
 						bind:value={input_value.password}
 						required
-						class="input input-bordered w-full"
+						class="input input-bordered w-full rounded"
 						type="password"
 						placeholder="••••••••"
 						name="password"
 					/>
 					<span bind:this={error_input.password} class="text-xs text-red-500" />
 				</label>
-				<div class="flex items-center justify-between">
-					<label class="flex items-center">
-						<input type="checkbox" class="checkbox" />
-						<span class="block ml-2 text-xs font-medium text-gray-700 cursor-pointer"
-							>Se souvenir de moi</span
-						>
-					</label>
-					<input type="submit" class="btn btn-error text-white normal-case" value="Connexion" />
+				<div id="connected" class="flex gap-1 items-center">
+					<input type="checkbox" name="" id="" class="text-[#3498db] h-3 w-3" />
+					<span class="text-sm">Rester connecté</span>
 				</div>
-			</form>
-			{#if notVerified == 3}
-				<div transition:fade class="alert alert-warning shadow-md">
-					<div>
-						<svg
-							xmlns="http://www.w3.org/2000/svg"
-							class="stroke-current flex-shrink-0 h-6 w-6"
-							fill="none"
-							viewBox="0 0 24 24"
-							><path
-								stroke-linecap="round"
-								stroke-linejoin="round"
-								stroke-width="2"
-								d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
-							/></svg
-						>
-						<span class="text-xs"
-							>Pas recus d'email ? Vérifier vos spams ou <a href="" class="text-blue-600"
-								>renvoyer</a
+				{#if notVerified == 3}
+					<div transition:fade class="alert alert-warning shadow-md">
+						<div>
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								class="stroke-current flex-shrink-0 h-6 w-6"
+								fill="none"
+								viewBox="0 0 24 24"
+								><path
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									stroke-width="2"
+									d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
+								/></svg
 							>
-						</span>
+							<span class="text-xs"
+								>En attente de vérification. Pas recus d'email ? Vérifier vos spams ou <a
+									href=""
+									class="text-blue-600">renvoyer</a
+								>
+							</span>
+						</div>
 					</div>
-				</div>
-			{:else if notVerified == 2}
-				<div class="alert alert-error shadow-lg">
-					<div>
-						<svg
-							xmlns="http://www.w3.org/2000/svg"
-							class="stroke-current flex-shrink-0 h-6 w-6"
-							fill="none"
-							viewBox="0 0 24 24"
-							><path
-								stroke-linecap="round"
-								stroke-linejoin="round"
-								stroke-width="2"
-								d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
-							/></svg
-						>
-						<span class="text-xs"
-							>Vous avez dépassé le nombre de demande, contacter l'assistance.
-						</span>
+				{:else if notVerified == 2}
+					<div class="alert alert-error shadow-lg">
+						<div>
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								class="stroke-current flex-shrink-0 h-6 w-6"
+								fill="none"
+								viewBox="0 0 24 24"
+								><path
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									stroke-width="2"
+									d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
+								/></svg
+							>
+							<span class="text-xs"
+								>Vous avez dépassé le nombre de demande, contacter l'assistance.
+							</span>
+						</div>
 					</div>
-				</div>
-			{/if}
+				{/if}
+				<button
+					bind:this={sbt}
+					type="submit"
+					class="bg-[#3498db] font-semibold my-2 w-full h-12 text-white normal-case cursor-pointer rounded"
+					>Me connecter</button
+				>
+				<div class="divider">OU</div>
+				<a
+					href="/auth/users/signup"
+					class="text-[#3498db] h-12 outline outline-[#3498db] rounded outline-1 flex justify-center items-center"
+					>Ouvrir un compte</a
+				>
+				<a
+					href="/auth/employers/signin"
+					class="bg-gray-700 text-white h-12 outline font-semibold rounded outline-1 flex justify-center items-center"
+					>Je suis une entreprise</a
+				>
+			</form>
 		</div>
-		<p
-			class="mb-4 flex items-center gap-x-4 justify-center space-y-2 text-sm text-left text-gray-600 sm:text-center sm:space-y-0"
-		>
-			<!-- <a href="#" class="w-full btn btn-sm btn-link sm:w-auto">Forgot password</a> -->
-			<a href="/auth/users/signup" class="w-full sm:w-auto text-red-400 hover:text-purple-900"
-				>Créer un compte</a
-			>
-			<span class="hidden sm:flex">×</span>
-			<a href="/auth/employers/signin" class="text-gray-400 hover:text-purple-900 w-fit"
-				>Je suis une entreprise</a
-			>
-		</p>
 	</div>
 </section>

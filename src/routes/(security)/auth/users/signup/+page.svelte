@@ -197,13 +197,13 @@
 						>Ouvrir mon compte</button
 					>
 				</div>
+				<div class="divider max-w-2xl mx-auto my-10 text-gray-800">OU</div>
+				<a
+					href="/auth/users/signin"
+					class="text-[#3498db] h-12 outline outline-[#3498db] rounded outline-1 flex justify-center items-center"
+					>Connectez-vous</a
+				>
 			</form>
 		</div>
-		<div class="divider max-w-2xl mx-auto my-10 text-gray-800">OU</div>
-		<a
-			href="/auth/users/signin"
-			class="text-[#3498db] h-12 outline outline-[#3498db] rounded outline-1 flex justify-center items-center max-w-xs mx-auto"
-			>Connectez-vous</a
-		>
 	</div>
 </section>
