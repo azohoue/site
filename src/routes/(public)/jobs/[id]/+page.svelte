@@ -8,7 +8,7 @@
 	let logo = job.expand.organization.logo;
 </script>
 
-<div class="navbar h-16 px-4 sm:px-16 z-50 bg-[#3498db] text-white shadow-md z-10">
+<div class="navbar h-16 px-4 sm:px-16 z-50 bg-[#3498db] text-white shadow-md">
 	<div class="navbar-start">
 		<div class="flex justify-center items-center gap-1">
 			<svg
@@ -91,7 +91,7 @@
 		>
 			<img
 				src={logo ? `${PUBLIC_API_URL}/api/files/organizations/${id}/${logo}` : '/images/empty.jpg'}
-				class="h-[120px] w-[120px] rounded-md object-cover ring ring-red-400 ring-offset-2"
+				class="h-[120px] w-[120px] rounded-md object-cover ring ring-[#3498db] ring-offset-2"
 				alt=""
 			/>
 			<h3 class="font-semibold text-md text-gray-400 capitalize gap-x-1 flex items-center">
@@ -100,7 +100,7 @@
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
 						viewBox="0 0 24 24"
-						fill="#DC2626"
+						fill="#3498db"
 						class="w-5 h-5"
 					>
 						<path
@@ -228,10 +228,10 @@
 				<div id="description" class="px-0">
 					{@html job.description}
 				</div>
-				<div class="flex justify-between items-end text-[#EE786B]">
+				<div class="flex justify-between items-end text-[#3498db]">
 					<a
 						href={'/users/me/jobs/' + job.id}
-						class="cursor-pointer border-[1px] font-semibold rounded-md px-[16px] py-[7.2px] border-[#EE786B] text-[#EE786B] normal-case"
+						class="cursor-pointer border-[1px] font-semibold rounded-md px-[16px] py-[7.2px] border-[#3498db] text-[#3498db] normal-case"
 						>Postuler pour cet offre</a
 					>
 				</div>

@@ -18,7 +18,7 @@
 		<div id="logo" class="h-fit w-full flex justify-start flex-col gap-y-2">
 			<img
 				src={logo ? `${PUBLIC_API_URL}/api/files/organizations/${id}/${logo}` : '/images/empty.jpg'}
-				class="h-[120px] w-[120px] rounded-md object-cover ring ring-red-400 ring-offset-2"
+				class="h-[120px] w-[120px] rounded-md object-cover ring ring-[#3498db]"
 				alt=""
 			/>
 			<h3 class="font-semibold text-md text-gray-400 capitalize gap-x-1 flex items-center">
@@ -152,34 +152,13 @@
 				</div>
 				<div id="description" class="px-0">
 					<!-- TODO: REMOVE CONTENT LATER -->
-					<!-- <h2>About Stimulus</h2>
-					<p>
-						<a href="https://github.com/florentazd">Desipro</a> is a social platform started by Sticker
-						Mule to show what's possible if your mission is to increase human happiness.
-					</p>
-					<h2>We offer</h2>
-					<ul>
-						<li>Remote work with flexible schedules</li>
-						<li>A privately owned, low-stress culture.</li>
-						<li>A fun "no bullshit" work environment</li>
-					</ul>
-					<h2>We like you to know</h2>
-					<ul>
-						<li>Docker</li>
-						<li>NextJS</li>
-						<li>TypeScript</li>
-					</ul>
-					<h2>Compensation and benefits</h2>
-					<ul>
-						<li>Salary: $120k+ based on experience</li>
-						<li>$20,000 signing bonus</li>
-						<li>4 weeks vacation + holidays based on your country of residence</li>
-					</ul>
-					<p>Contact us here <a href="mailto:desipro@desipro.com">desipro@desipro.com</a></p> -->
+
 					{@html job.description}
 					<!--  -->
 				</div>
-				<div class="w-full h-fit flex flex-col gap-y-4 py-4 bg-white rounded-md border-[1px] px-4">
+				<div
+					class="w-full sm:w-full h-fit flex flex-col gap-y-4 py-4 bg-white rounded-md border-[1px] px-4"
+				>
 					<span class="text-xl font-semibold">Partager l'offre sur:</span>
 					<div class="flex gap-x-10">
 						<a
@@ -213,7 +192,7 @@
 						</a>
 					</div>
 				</div>
-				<div class="flex justify-between items-end text-[#EE786B]">
+				<div class="flex justify-between items-end text-[#3498db]">
 					<a
 						href={'mailto:' +
 							job.expand.organization.email +
@@ -221,7 +200,7 @@
 							job.name +
 							'&body=Je postule pour la candidature suivante: https://azohoue.ga/jobs/' +
 							job.id}
-						class="cursor-pointer border-[1px] font-semibold rounded-md px-[16px] py-[7.2px] border-[#EE786B] text-[#EE786B] normal-case"
+						class="cursor-pointer border-[1px] font-semibold rounded-md px-[16px] py-[7.2px] border-[#3498db] text-[#3498db] normal-case sm:w-80 w-full text-center"
 						>Postuler pour cet offre</a
 					>
 				</div>
@@ -296,7 +275,7 @@
 								<span>{othersJob.salary}</span>
 							</div>
 						</div>
-						<div class="flex justify-between items-end text-[#EE786B]">
+						<div class="flex justify-between items-end text-[#3498db]">
 							<!-- <a href={'/users/me/jobs/' + othersJob.id} class="cursor-pointer"
 								>Voir plus de détails >
 							</a> -->
@@ -307,7 +286,7 @@
 									othersJob.name +
 									'&body=Je postule pour la candidature suivante: https://azohoue.ga/jobs/' +
 									othersJob.id}
-								class="cursor-pointer border-[1px] font-semibold rounded-md px-[16px] py-[7.2px] border-[#EE786B] text-[#EE786B] normal-case w-full text-center"
+								class="cursor-pointer border-[1px] font-semibold rounded-md px-[16px] py-[7.2px] border-[#3498db] text-[#3498db] normal-case w-full text-center"
 								>Postuler pour cet offre</a
 							>
 						</div>

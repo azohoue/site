@@ -30,12 +30,6 @@
 		</div>
 		<div class="navbar-center hidden lg:flex items-center">
 			<ul class="menu menu-horizontal px-1 text-base font-normal font-sans">
-				<li class="px-0 py-3">
-					<a href="">Tous les offres</a>
-				</li>
-				<li class="px-0 py-3">
-					<a href="">Liste des entreprises</a>
-				</li>
 				<li class="px-0 py-3" tabindex="0">
 					<span>
 						Compte Utilisateur
@@ -69,6 +63,12 @@
 						<li><a href="/auth/employers/signup">Ouvrir mon compte</a></li>
 						<li><a href="/auth/employers/signin">Me connecter</a></li>
 					</ul>
+				</li>
+				<li class="px-0 py-3">
+					<a href="">Tous les offres</a>
+				</li>
+				<li class="px-0 py-3">
+					<a href="">Liste des entreprises</a>
 				</li>
 			</ul>
 		</div>
