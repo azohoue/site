@@ -12,9 +12,9 @@
 
 <section
 	id="acceuil"
-	class="h-full w-full flex flex-col items-center sm:items-start px-4 sm:px-10 overflow-x-hidden overflow-y-auto"
+	class="w-full h-full flex justify-center sm:justify-start relative top-0 sm:top-0 px-4 sm:px-10"
 >
-	<div class="w-full flex flex-col gap-10 mx-auto">
+	<div class="w-full flex flex-col gap-10 sm:gap-0 mx-auto">
 		{#if jobs.length > 0}
 			<div class="h-fit flex justify-between items-center py-10 relative top-10 sm:top-0">
 				<h2 class="sm:text-xl font-semibold">Vos offres d'emploi</h2>
