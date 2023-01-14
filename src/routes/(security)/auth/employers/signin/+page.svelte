@@ -114,7 +114,7 @@
 					name="email"
 					required
 				/>
-				<span bind:this={error_input.email} class="text-xs text-[#3498db]" />
+				<span bind:this={error_input.email} class="text-xs text-red-500" />
 			</label>
 			<label class="block">
 				<span class="block mb-1 text-sm font-medium text-gray-700">Votre mot de passe</span>
@@ -127,7 +127,7 @@
 					placeholder="••••••••"
 					name="password"
 				/>
-				<span bind:this={error_input.password} class="text-xs text-[#3498db]" />
+				<span bind:this={error_input.password} class="text-xs text-red-500" />
 			</label>
 			<div id="connected" class="flex gap-1 items-center">
 				<input type="checkbox" name="" id="" class="color-[#3498db] h-3 w-3" />
@@ -181,17 +181,18 @@
 				</div>
 			</div>
 		{/if}
-		<div
-			class="pt-6 flex flex-col gap-4 text-sm font-medium text-gray-700 border-t border-gray-200"
-		>
+		<div class="divider">OU</div>
+		<div class="pt-2 flex flex-col gap-4 text-sm font-medium text-gray-700">
 			<a
 				href="/auth/employers/signup"
 				class="text-[#3498db] h-12 outline outline-[#3498db] rounded outline-1 flex justify-center items-center"
 				>Ouvrir un compte</a
 			>
-			<!-- <a href="/auth/users/signin" class="text-gray-400 hover:text-purple-900"
+			<a
+				href="/auth/users/signin"
+				class="bg-gray-700 text-white h-12 outline font-semibold rounded outline-1 flex justify-center items-center"
 				>Je suis un utilisateur</a
-			> -->
+			>
 		</div>
 	</div>
 	<!--  -->

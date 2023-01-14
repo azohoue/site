@@ -134,19 +134,6 @@
 		>
 			<div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
 				<label class="block">
-					<span class="block mb-1 text-sm font-medium text-gray-700">Nom de famille</span>
-					<input
-						bind:this={user_input.firstname}
-						bind:value={input_value.firstname}
-						required
-						class="input input-bordered w-full rounded"
-						type="text"
-						placeholder="Ex: Djossou"
-						name="firstname"
-					/>
-					<span bind:this={error_input.firstname} class="text-xs text-[#3498db]" />
-				</label>
-				<label class="block">
 					<span class="block mb-1 text-sm font-medium text-gray-700">Prénom(s)</span>
 					<input
 						bind:this={user_input.lastname}
@@ -155,9 +142,22 @@
 						class="input input-bordered w-full rounded"
 						type="text"
 						placeholder="Ex: Jean"
+						name="firstname"
+					/>
+					<span bind:this={error_input.lastname} class="text-xs text-red-500" />
+				</label>
+				<label class="block">
+					<span class="block mb-1 text-sm font-medium text-gray-700">Nom de famille</span>
+					<input
+						bind:this={user_input.firstname}
+						bind:value={input_value.firstname}
+						required
+						class="input input-bordered w-full rounded"
+						type="text"
+						placeholder="Ex: Djossou"
 						name="lastname"
 					/>
-					<span bind:this={error_input.lastname} class="text-xs text-[#3498db]" />
+					<span bind:this={error_input.firstname} class="text-xs text-red-500" />
 				</label>
 			</div>
 			<label class="block">
@@ -171,7 +171,7 @@
 					placeholder="Ex: azohoue"
 					name="organization"
 				/>
-				<span bind:this={error_input.organization} class="text-xs text-[#3498db]" />
+				<span bind:this={error_input.organization} class="text-xs text-red-500" />
 			</label>
 			<label class="block">
 				<span class="block mb-1 text-sm font-medium text-gray-700">Votre adresse email</span>
@@ -184,7 +184,7 @@
 					placeholder="Ex: jean.djossou@azohoue.com"
 					name="email"
 				/>
-				<span bind:this={error_input.email} class="text-xs text-[#3498db]" />
+				<span bind:this={error_input.email} class="text-xs text-red-500" />
 			</label>
 			<label class="block">
 				<span class="block mb-1 text-sm font-medium text-gray-700"
@@ -202,7 +202,7 @@
 					placeholder="••••••••"
 					name="password"
 				/>
-				<span bind:this={error_input.password} class="text-xs text-[#3498db]" />
+				<span bind:this={error_input.password} class="text-xs text-red-500" />
 			</label>
 			<label class="flex items-center">
 				<input name="cdn" type="checkbox" class="checkbox w-4 h-4 rounded" required />

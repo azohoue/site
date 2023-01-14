@@ -8,6 +8,77 @@
 	let logo = job.expand.organization.logo;
 </script>
 
+<div class="navbar h-16 px-4 sm:px-16 z-50 bg-[#3498db] text-white shadow-md z-10">
+	<div class="navbar-start">
+		<div class="flex justify-center items-center gap-1">
+			<svg
+				xmlns="http://www.w3.org/2000/svg"
+				viewBox="0 0 24 24"
+				fill="currentColor"
+				class="w-6 h-6"
+			>
+				<path
+					fill-rule="evenodd"
+					d="M1.5 7.125c0-1.036.84-1.875 1.875-1.875h6c1.036 0 1.875.84 1.875 1.875v3.75c0 1.036-.84 1.875-1.875 1.875h-6A1.875 1.875 0 011.5 10.875v-3.75zm12 1.5c0-1.036.84-1.875 1.875-1.875h5.25c1.035 0 1.875.84 1.875 1.875v8.25c0 1.035-.84 1.875-1.875 1.875h-5.25a1.875 1.875 0 01-1.875-1.875v-8.25zM3 16.125c0-1.036.84-1.875 1.875-1.875h5.25c1.036 0 1.875.84 1.875 1.875v2.25c0 1.035-.84 1.875-1.875 1.875h-5.25A1.875 1.875 0 013 18.375v-2.25z"
+					clip-rule="evenodd"
+				/>
+			</svg>
+			<a href="/" class="normal-case text-xl font-semibold text-[20px] h-fit">azohoue</a>
+		</div>
+	</div>
+	<div class="navbar-center hidden lg:flex items-center">
+		<ul class="menu menu-horizontal px-1 text-base font-normal font-sans">
+			<li class="px-0 py-3">
+				<a href="">Tous les offres</a>
+			</li>
+			<li class="px-0 py-3">
+				<a href="">Liste des entreprises</a>
+			</li>
+			<li class="px-0 py-3" tabindex="0">
+				<span>
+					Compte Utilisateur
+					<svg
+						class="fill-current"
+						xmlns="http://www.w3.org/2000/svg"
+						width="20"
+						height="20"
+						viewBox="0 0 24 24"
+						><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" /></svg
+					>
+				</span>
+				<ul class="p-2 bg-[#fff] text-[#34495e] transition-all">
+					<li><a href="/auth/users/signup">Ouvrir mon compte</a></li>
+					<li><a href="/auth/users/signin">Me connecter</a></li>
+				</ul>
+			</li>
+			<li class="px-0 py-3" tabindex="0">
+				<span>
+					Compte Entreprise
+					<svg
+						class="fill-current"
+						xmlns="http://www.w3.org/2000/svg"
+						width="20"
+						height="20"
+						viewBox="0 0 24 24"
+						><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" /></svg
+					>
+				</span>
+				<ul class="p-2 bg-[#fff] text-[#34495e] transition-all">
+					<li><a href="/auth/employers/signup">Ouvrir mon compte</a></li>
+					<li><a href="/auth/employers/signin">Me connecter</a></li>
+				</ul>
+			</li>
+		</ul>
+	</div>
+	<div class="navbar-end flex gap-x-4">
+		<a
+			href="/employers/"
+			class="flex bg-transparent hover:bg-white border rounded border-white hover:text-gray-700 px-4 py-2 text-white font-semibold cursor-pointer"
+			>Poster une offre</a
+		>
+	</div>
+</div>
+<!--  -->
 <section
 	id="job-view"
 	class="bg-[#f8f9fd] h-fit min-h-screen w-full flex justify-center px-4 xl:px-0 pt-10"
@@ -16,7 +87,7 @@
 		<a
 			href={'/companies/' + job.expand.organization.id}
 			id="logo"
-			class="h-fit w-full flex justify-start flex-col gap-y-4"
+			class="h-fit w-fit flex justify-start flex-col gap-y-4"
 		>
 			<img
 				src={logo ? `${PUBLIC_API_URL}/api/files/organizations/${id}/${logo}` : '/images/empty.jpg'}
