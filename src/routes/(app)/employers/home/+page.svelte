@@ -74,6 +74,7 @@
 								<th>Salaire</th>
 								<th>Type de contrat</th>
 								<th>Status</th>
+								<th>Vues</th>
 								<th>Date de création</th>
 								<th />
 							</tr>
@@ -113,12 +114,21 @@
 											<p class="badge rounded pending">En attente</p>
 										{/if}
 									</th>
-									<th>
+									<td> {job.views} vues</td>
+									<td>
 										<span class="text-gray-700 normal-case font-normal">{job.created}</span>
-									</th>
+									</td>
 									<th>
-										<button class="h-8 text-[#3498db] bg-[#e9f5fe] px-2 rounded">Modifier</button>
-										<button class="text-red-500 bg-red-50 h-8 px-2 rounded">Supprimer</button>
+										<form action="?/deleteJob" method="post">
+											<button class="h-8 text-[#3498db] bg-[#e9f5fe] px-2 rounded"
+												><a href={'/employers/jobs/' + job.id + '/update'}>Modifier</a></button
+											>
+											<button
+												formaction="?/deleteJob"
+												class="text-red-500 bg-red-50 h-8 px-2 rounded">Supprimer</button
+											>
+											<input type="hidden" name="jobId" value={job.id} />
+										</form>
 									</th>
 									<!-- <th>
 								</th> -->

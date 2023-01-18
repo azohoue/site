@@ -1,6 +1,6 @@
 import { convertTime } from '$lib/utils/dateConverter';
 import type { PageServerLoad } from './$types';
-import { redirect, type Actions } from '@sveltejs/kit';
+import { redirect, type Actions, fail } from '@sveltejs/kit';
 
 export const load = (
     async ({ locals, parent }) => {
@@ -30,5 +30,21 @@ export const actions = ({
         locals.pb.authStore.clear()
         // Renvoyer vers le login
         throw redirect(307, "/employers/auth/signin")
+    },
+    deleteJob: async ({ locals, request }) => {
+        const formData = await request.formData()
+        const jobId = formData.get("jobId");
+        if (!jobId) return fail(400, {
+            message: "L'offre a supprimer n'existe pas."
+        })
+
+        if (jobId.length > 50) return fail(400, { message: "L'id est trop long !" })
+
+        try {
+            await locals.pb.collection("jobs").delete(jobId)
+        } catch (e) {
+            return fail(e.status)
+        }
+
     }
 }) satisfies Actions

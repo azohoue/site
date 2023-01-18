@@ -26,8 +26,10 @@ export const actions = (
                 return fail(400)
             }
             try {
+                console.log("lorem ipsum ");
+
                 const result = await locals.pb.collection("jobs").getFullList(200, {
-                    filter: `name ~ '${query}' || organization.name ~ '${query}'`, expand: "organization"
+                    filter: `(name ~ '${query}' || organization.name ~ '${query}') && status = "En ligne"`, expand: "organization"
                 })
                 result.forEach((item) => {
                     item.created = convertTime(item.created)

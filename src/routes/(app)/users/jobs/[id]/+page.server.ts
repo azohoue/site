@@ -1,13 +1,14 @@
 import { error } from '@sveltejs/kit';
 import type { PageServerLoad } from '../$types';
 
+export const prerender = false;
+
 export const load = (async ({ params, locals }) => {
     if (!params.id)
         throw error(400, {
             message: "Id invalid"
         })
     // Si l'utilisateur entre un, id, on la recherche dans la base de données.
-
     let job: any = {}
     // On a l'id du job recherche, on va dans la bd pour aller prendre toutes les informations sur le job?
     try {
